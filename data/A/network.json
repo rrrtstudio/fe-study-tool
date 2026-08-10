@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "A0013",
+      "exam": "A",
+      "category": "テクノロジ系",
+      "subcategory": "ネットワーク",
+      "difficulty": 1,
+      "question": "IPv4アドレスのビット長はどれか。",
+      "choices": ["16ビット", "32ビット", "64ビット", "128ビット"],
+      "correct": 1,
+      "explanation": "正解はBです。IPv4アドレスは32ビットで、通常は8ビットずつ4組の10進数で表します。16ビットではアドレス数が不足し、64ビットはIPv4の規格ではありません。128ビットはIPv6の長さです。IPv4とIPv6のビット数を対で覚えます。"
+    },
+    {
+      "id": "A0014",
+      "exam": "A",
+      "category": "テクノロジ系",
+      "subcategory": "ネットワーク",
+      "difficulty": 1,
+      "question": "ドメイン名とIPアドレスを対応付ける仕組みはどれか。",
+      "choices": ["DNS", "DHCP", "ARP", "NAT"],
+      "correct": 0,
+      "explanation": "正解はAです。DNS（Domain Name System）はドメイン名とIPアドレスなどを対応付け、名前解決を行います。DHCPは端末へIP設定を配布し、ARPは同一ネットワーク内でIPv4アドレスからMACアドレスを調べ、NATはアドレスを変換します。"
+    },
+    {
+      "id": "A0015",
+      "exam": "A",
+      "category": "テクノロジ系",
+      "subcategory": "ネットワーク",
+      "difficulty": 2,
+      "question": "異なるIPネットワーク間でパケットを中継する機器はどれか。",
+      "choices": ["リピータ", "ルータ", "レイヤ2スイッチ", "ブリッジ"],
+      "correct": 1,
+      "explanation": "正解はBです。ルータは宛先IPアドレスとルーティング表を使い、異なるIPネットワーク間でパケットを中継します。リピータは信号を再生し、レイヤ2スイッチとブリッジは主にMACアドレスを基に同一レイヤ2ネットワーク内のフレームを中継します。"
+    }
+  ]
+}

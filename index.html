@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="基本情報技術者試験の科目A・科目Bを4択問題で学べる、端末内保存型の学習アプリです。"
+    />
+    <meta name="theme-color" content="#173f5f" />
+    <title>FE Study Deck | 基本情報技術者試験 4択学習</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">本文へスキップ</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <button class="brand" id="brand-home" type="button" aria-label="トップへ戻る">
+          <span class="brand-mark" aria-hidden="true">FE</span>
+          <span>
+            <strong>Study Deck</strong>
+            <small>基本情報技術者試験</small>
+          </span>
+        </button>
+        <span class="save-note"><span aria-hidden="true">●</span> 学習履歴はこの端末に保存</span>
+      </div>
+    </header>
+
+    <main id="main-content" class="shell" tabindex="-1">
+      <div id="app-message" class="app-message" role="status" aria-live="polite" hidden></div>
+
+      <section id="home-view" class="view" aria-labelledby="home-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">FOCUSED PRACTICE</p>
+            <h1 id="home-title">今日の理解を、<br /><span>確かな得点力へ。</span></h1>
+            <p>
+              科目と分野を選んで、すぐに演習。解説と学習履歴を使い、間違いを次の正解につなげます。
+            </p>
+          </div>
+
+          <aside class="history-panel" aria-labelledby="history-title">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">YOUR PROGRESS</p>
+                <h2 id="history-title">学習サマリー</h2>
+              </div>
+              <button id="reset-history" class="text-button danger-text" type="button">履歴をリセット</button>
+            </div>
+            <div class="stat-grid">
+              <div class="stat-card">
+                <span>累計回答</span>
+                <strong id="history-total">0<small>問</small></strong>
+              </div>
+              <div class="stat-card stat-card-accent">
+                <span>累計正答率</span>
+                <strong id="history-rate">—</strong>
+              </div>
+            </div>
+            <div class="history-fields">
+              <h3>分野別正答率</h3>
+              <div id="history-field-list" class="history-field-list"></div>
+            </div>
+          </aside>
+        </div>
+
+        <form id="quiz-settings" class="settings-card">
+          <div class="settings-heading">
+            <div>
+              <p class="eyebrow">NEW SESSION</p>
+              <h2>出題条件を選ぶ</h2>
+            </div>
+            <p id="data-summary" class="data-summary">問題データを読み込んでいます…</p>
+          </div>
+
+          <div class="settings-grid">
+            <fieldset>
+              <legend><span>01</span> 出題範囲</legend>
+              <div class="option-grid option-grid-four">
+                <label class="setting-option">
+                  <input type="radio" name="scope" value="all" checked />
+                  <span>全問題</span>
+                </label>
+                <label class="setting-option">
+                  <input type="radio" name="scope" value="A" />
+                  <span>科目A</span>
+                </label>
+                <label class="setting-option">
+                  <input type="radio" name="scope" value="B" />
+                  <span>科目B</span>
+                </label>
+                <label class="setting-option">
+                  <input type="radio" name="scope" value="field" />
+                  <span>分野別</span>
+                </label>
+              </div>
+              <div id="field-filters" class="field-filters" hidden>
+                <label>
+                  カテゴリ
+                  <select id="category-select" name="category"></select>
+                </label>
+                <label>
+                  サブカテゴリ
+                  <select id="subcategory-select" name="subcategory"></select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span>02</span> 出題数</legend>
+              <div class="option-grid option-grid-three">
+                <label class="setting-option">
+                  <input type="radio" name="count" value="10" checked />
+                  <span>10問</span>
+                </label>
+                <label class="setting-option">
+                  <input type="radio" name="count" value="20" />
+                  <span>20問</span>
+                </label>
+                <label class="setting-option">
+                  <input type="radio" name="count" value="30" />
+                  <span>30問</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span>03</span> 出題方式</legend>
+              <div class="mode-grid">
+                <label class="mode-option">
+                  <input type="radio" name="mode" value="random" checked />
+                  <span><strong>ランダム出題</strong><small>対象から均等に抽選</small></span>
+                </label>
+                <label class="mode-option">
+                  <input type="radio" name="mode" value="mistakes" />
+                  <span><strong>間違えた問題から</strong><small>過去に誤答した問題を復習</small></span>
+                </label>
+                <label class="mode-option">
+                  <input type="radio" name="mode" value="adaptive" />
+                  <span>
+                    <strong>苦手分野を優先 <em>β</em></strong>
+                    <small>正答率と誤答回数から重み付け</small>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <p id="settings-error" class="inline-error" role="alert" hidden></p>
+          <button id="start-quiz" class="primary-button start-button" type="submit" disabled>
+            この条件で学習を始める <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+
+      <section id="quiz-view" class="view quiz-view" aria-labelledby="question-heading" hidden>
+        <div class="quiz-topline">
+          <div>
+            <p id="quiz-position" class="quiz-position">1 / 10問</p>
+            <p id="quiz-category" class="quiz-category"></p>
+          </div>
+          <div class="live-score"><span>現在の正解</span><strong id="quiz-score">0問</strong></div>
+        </div>
+        <div
+          id="quiz-progress"
+          class="progress-track"
+          role="progressbar"
+          aria-label="問題の進捗"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span></span>
+        </div>
+
+        <article class="question-card">
+          <div class="question-label"><span id="question-number">Q1</span><span id="question-difficulty"></span></div>
+          <h1 id="question-heading" tabindex="-1"></h1>
+
+          <form id="answer-form">
+            <fieldset class="answer-fieldset">
+              <legend class="sr-only">回答を1つ選んでください</legend>
+              <div id="choice-list" class="choice-list"></div>
+            </fieldset>
+            <button id="answer-button" class="primary-button answer-button" type="submit" disabled>回答する</button>
+          </form>
+
+          <div id="feedback" class="feedback" aria-live="polite" tabindex="-1" hidden>
+            <div class="feedback-heading">
+              <span id="feedback-icon" class="feedback-icon" aria-hidden="true"></span>
+              <div>
+                <p>判定</p>
+                <h2 id="feedback-result"></h2>
+              </div>
+            </div>
+            <p id="feedback-answer" class="correct-answer"></p>
+            <div class="explanation-box">
+              <h3>解説</h3>
+              <p id="feedback-explanation"></p>
+            </div>
+          </div>
+
+          <button id="next-button" class="primary-button next-button" type="button" hidden>
+            次の問題へ <span aria-hidden="true">→</span>
+          </button>
+        </article>
+      </section>
+
+      <section id="result-view" class="view result-view" aria-labelledby="result-title" hidden>
+        <div class="result-hero">
+          <div>
+            <p class="eyebrow">SESSION COMPLETE</p>
+            <h1 id="result-title">学習結果</h1>
+            <p id="result-message"></p>
+          </div>
+          <div id="result-rate" class="result-rate" aria-label="正答率"></div>
+        </div>
+
+        <div class="result-stat-grid">
+          <div><span>出題数</span><strong id="result-total"></strong></div>
+          <div><span>正解</span><strong id="result-correct"></strong></div>
+          <div><span>不正解</span><strong id="result-wrong"></strong></div>
+          <div><span>間違えた問題</span><strong id="result-mistakes"></strong></div>
+        </div>
+
+        <section class="result-section" aria-labelledby="field-result-title">
+          <div class="section-heading">
+            <h2 id="field-result-title">分野別の結果</h2>
+            <p>サブカテゴリ単位で集計</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>分野</th><th>正解</th><th>正答率</th></tr></thead>
+              <tbody id="result-field-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="wrong-review-section" class="result-section" aria-labelledby="wrong-review-title">
+          <div class="section-heading">
+            <h2 id="wrong-review-title">間違えた問題の確認</h2>
+            <p>開くと回答と解説を確認できます</p>
+          </div>
+          <div id="wrong-review-list" class="wrong-review-list"></div>
+        </section>
+
+        <div class="result-actions">
+          <button id="review-mistakes" class="primary-button" type="button">間違えた問題だけ復習</button>
+          <button id="retry-quiz" class="secondary-button" type="button">同じ条件でもう一度</button>
+          <button id="back-home" class="text-button" type="button">トップへ戻る</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <p>FE Study Deck <span>／</span> 端末内で完結する学習ツール</p>
+        <p>サンプル問題は学習・動作確認用のオリジナルです。</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

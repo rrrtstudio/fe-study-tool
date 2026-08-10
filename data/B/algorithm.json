@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "B0001",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "次の処理を実行した。終了時のsumはどれか。\n\n整数型: sum ← 0\nfor (iを1から4まで1ずつ増やす)\n  sum ← sum + i\nendfor",
+      "choices": ["4", "6", "10", "16"],
+      "correct": 2,
+      "explanation": "正解はCです。sumは0→1→3→6→10と変化し、1＋2＋3＋4＝10です。Aは最後のiだけ、Bは4を加える前、Dは4を4回加えた場合の値です。繰返し問題では、初期値と各回終了時の値を順に書くと追跡しやすくなります。"
+    },
+    {
+      "id": "B0002",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "次の処理を実行した。終了時のxはどれか。\n\n整数型: x ← 1\nfor (iを1から3まで1ずつ増やす)\n  x ← x × 2\nendfor",
+      "choices": ["3", "6", "8", "9"],
+      "correct": 2,
+      "explanation": "正解はCです。xは初期値1から、1回目2、2回目4、3回目8と変化します。Aは加算回数だけを答えた値、Bは初期値へ2×3を加えたような誤り、Dは3を3倍した値です。同じ代入を繰り返すと、右辺は毎回更新後のxを使います。"
+    },
+    {
+      "id": "B0003",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "配列dataの添字は1から始まる。次の処理後のmaxはどれか。\n\n整数型の配列: data ← [3, 1, 4, 2]\n整数型: max ← data[1]\nfor (iを2から4まで1ずつ増やす)\n  if (data[i] > max)\n    max ← data[i]\n  endif\nendfor",
+      "choices": ["1", "2", "3", "4"],
+      "correct": 3,
+      "explanation": "正解はDです。maxは最初に3です。1では更新せず、4を調べたとき3→4へ更新し、最後の2でも変わりません。AとBは要素を順に見ただけの値、Cは初期値のまま更新を忘れた場合です。最大値探索では先頭要素を初期値にすると、負数だけの配列にも対応できます。"
+    }
+  ]
+}

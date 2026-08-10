@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "B0007",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "次の処理を実行した後のxとyの値はどれか。\n\n整数型: x, y\nx ← 5\ny ← x + 3\nx ← y − 2",
+      "choices": ["x=5, y=8", "x=6, y=8", "x=6, y=6", "x=8, y=6"],
+      "correct": 1,
+      "explanation": "正解はBです。最初にx=5、次にy=5+3=8、最後にx=8−2=6となります。代入は右辺を計算してから左辺を更新します。Aは最後の代入を無視し、CとDはxとyの更新を混同しています。"
+    },
+    {
+      "id": "B0008",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "scoreが70のとき、出力される文字はどれか。\n\nif (scoreが80以上)\n  \"A\"を出力\nelseif (scoreが60以上)\n  \"B\"を出力\nelse\n  \"C\"を出力\nendif",
+      "choices": ["A", "B", "C", "何も出力されない"],
+      "correct": 1,
+      "explanation": "正解はBです。70は80以上ではないので最初の条件は偽ですが、60以上なのでelseifの処理を実行します。条件分岐は上から評価し、最初に真となった枝だけを実行します。"
+    },
+    {
+      "id": "B0009",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "配列の添字は1から始まる。処理後のdata[2]はどれか。\n\n整数型配列: data ← {4, 7, 2}\ndata[2] ← data[1] + data[3]",
+      "choices": ["4", "6", "7", "9"],
+      "correct": 1,
+      "explanation": "正解はBです。data[1]=4、data[3]=2なので、data[2]は4+2=6へ更新されます。Cは更新前の値、Dは添字2と3の値を足した誤りです。添字の開始位置を最初に確認する習慣が重要です。"
+    },
+    {
+      "id": "B0010",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "処理終了時のsumはどれか。modは剰余を表す。\n\n整数型: sum ← 0\nfor (iを1から6まで1ずつ増やす)\n  if (i mod 2 = 0)\n    sum ← sum + i\n  endif\nendfor",
+      "choices": ["6", "9", "12", "21"],
+      "correct": 2,
+      "explanation": "正解はCです。条件を満たす偶数2、4、6だけを加えるので、sum=2+4+6=12です。Aは最後の値だけ、Bは奇数の合計、Dは1〜6を全て足した値です。"
+    },
+    {
+      "id": "B0011",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "配列の添字は1から始まる。処理終了時のcountはどれか。\n\n整数型配列: a ← {5, 8, 2, 8, 6}\n整数型: count ← 0\nfor (iを1からaの要素数まで1ずつ増やす)\n  if (a[i]が5より大きい)\n    count ← count + 1\n  endif\nendfor",
+      "choices": ["2", "3", "4", "5"],
+      "correct": 1,
+      "explanation": "正解はBです。5より大きい要素は8、8、6の3個です。5は「5より大きい」には含まれません。Cは5以上として数えた場合、Dは全要素を数えた場合の値です。"
+    },
+    {
+      "id": "B0012",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "関数largerは二つの引数のうち大きい方を返す。式 larger(4, 9) + larger(7, 3) の値はどれか。",
+      "choices": ["7", "12", "13", "16"],
+      "correct": 3,
+      "explanation": "正解はDです。larger(4,9)は9、larger(7,3)は7を返すので、9+7=16です。Aは一方の結果だけ、Bは一つ目では大きい9、二つ目では小さい3を選んだ値です。Cは一つ目の関数の引数4と9だけを足した値です。"
+    },
+    {
+      "id": "B0013",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "処理終了時のcountはどれか。\n\n整数型: count ← 0\nfor (iを1から3まで1ずつ増やす)\n  for (jを1から2まで1ずつ増やす)\n    count ← count + 1\n  endfor\nendfor",
+      "choices": ["2", "3", "5", "6"],
+      "correct": 3,
+      "explanation": "正解はDです。外側の繰返し3回それぞれで、内側を2回実行するので3×2=6回加算します。Cは繰返し回数を3+2と足した誤りです。入れ子の独立した繰返し回数は掛け合わせます。"
+    },
+    {
+      "id": "B0014",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "処理後のaとbの値はどれか。\n\n整数型: a ← 3, b ← 5, temp\ntemp ← a\na ← b\nb ← temp",
+      "choices": ["a=3, b=3", "a=3, b=5", "a=5, b=3", "a=5, b=5"],
+      "correct": 2,
+      "explanation": "正解はCです。tempへ元のa=3を退避し、aへ5を入れ、最後にbへ退避した3を入れるので値が交換されます。退避せずにaを先に更新すると元の3を失うため、tempが必要です。"
+    },
+    {
+      "id": "B0015",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "xが7のとき、処理後のresultはどれか。\n\n整数型: result\nif ((xが5以上) and (xが10未満))\n  result ← 1\nelse\n  result ← 0\nendif",
+      "choices": ["−1", "0", "1", "7"],
+      "correct": 2,
+      "explanation": "正解はCです。7は5以上かつ10未満なので、ANDで結ばれた二条件が両方とも真となりresult=1です。0は条件が偽の場合、7はxの値をそのまま返すと誤解した値です。"
+    },
+    {
+      "id": "B0016",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "配列の添字は1から始まる。関数searchはtargetと等しい最初の要素の添字を返し、なければ−1を返す。a={6, 4, 9, 4}、target=4の返却値はどれか。\n\nfor (iを1からaの要素数まで1ずつ増やす)\n  if (a[i] = target)\n    return i\n  endif\nendfor\nreturn −1",
+      "choices": ["−1", "2", "3", "4"],
+      "correct": 1,
+      "explanation": "正解はBです。左から調べ、a[2]=4で初めて一致した時点で2を返して終了します。Dの4も値は一致しますが、最初の一致ではありません。Cは値9の位置です。"
+    },
+    {
+      "id": "B0017",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "昇順の挿入ソートで、配列{2, 5, 3, 7}の3番目の要素3を、先頭二要素からなる整列済み部分へ挿入した直後の配列はどれか。",
+      "choices": ["{2, 3, 5, 7}", "{3, 2, 5, 7}", "{2, 5, 7, 3}", "{7, 5, 3, 2}"],
+      "correct": 0,
+      "explanation": "正解はAです。挿入対象3より大きい5を一つ右へ移し、2と5の間へ3を入れます。Bは先頭へ無条件に挿入、Cは末尾と交換、Dは降順への全体整列で、1回の挿入操作とは異なります。"
+    },
+    {
+      "id": "B0018",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "空のキューに enqueue(10)、enqueue(20)、dequeue()、enqueue(30)、dequeue() の順で操作した。二回のdequeueで取り出される値と、最後に先頭に残る値の組合せはどれか。",
+      "choices": ["取出し10,20／先頭30", "取出し20,30／先頭10", "取出し20,10／先頭30", "取出し30,20／先頭10"],
+      "correct": 0,
+      "explanation": "正解はAです。キューは先入れ先出しです。10、20を入れた後に10を取り出し、30を追加すると並びは20、30なので、次に20を取り出して30が残ります。B〜Dはスタックの後入れ先出しなどとの混同です。"
+    },
+    {
+      "id": "B0019",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "文字列「(()())」を左から読み、'('でスタックへpushし、')'でpopする。処理中にスタックへ入っている要素数の最大値はどれか。",
+      "choices": ["1", "2", "3", "6"],
+      "correct": 1,
+      "explanation": "正解はBです。要素数は1→2→1→2→1→0と変化し、最大は2です。開き括弧の総数3や文字数6ではなく、同時に閉じられていない括弧の数を追跡します。"
+    },
+    {
+      "id": "B0020",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "再帰関数sum(4)の返却値はどれか。\n\n○整数型: sum(整数型: n)\n  if (n = 0)\n    return 0\n  else\n    return n + sum(n − 1)\n  endif",
+      "choices": ["4", "6", "10", "24"],
+      "correct": 2,
+      "explanation": "正解はCです。sum(4)=4+sum(3)=4+3+2+1+sum(0)=10です。sum(0)=0が終了条件です。Aは最初のnだけ、Dは4×3×2×1を計算する階乗との混同です。"
+    },
+    {
+      "id": "B0021",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "添字が1から始まる昇順配列{2, 5, 8, 12, 16, 23, 38}から16を二分探索する。中央は (low+high) div 2 とし、小数部を切り捨てる。値の比較は何回行われるか。",
+      "choices": ["2回", "3回", "4回", "5回"],
+      "correct": 1,
+      "explanation": "正解はBです。1回目は添字4の12でlow=5、2回目は添字6の23でhigh=5、3回目は添字5の16で一致します。探索範囲を半分にする回数を機械的にlog₂7とするのではなく、実際の中央位置を追います。"
+    },
+    {
+      "id": "B0022",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "単方向連結リストを配列nextで表し、0は終端とする。現在 next[1]=3、next[3]=4、next[4]=0 である。先頭ノード1は残したまま、その直後のノード3を削除する代入はどれか。",
+      "choices": ["next[1] ← next[3]", "next[3] ← next[1]", "next[4] ← next[3]", "next[1] ← 0"],
+      "correct": 0,
+      "explanation": "正解はAです。ノード3を飛ばすには、その前のノード1が、3の次である4を指すよう next[1]=next[3] とします。Bは3から自分の前へ戻るリンクを作り、Cは終端側を変更します。Dでは4もリストから到達不能になります。"
+    },
+    {
+      "id": "B0023",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "無向グラフでAはB,Cに、BはD,Eに、CはFに接続する。Aから幅優先探索し、同じ深さではアルファベット順にキューへ追加するとき、訪問順はどれか。",
+      "choices": ["A, B, D, E, C, F", "A, B, C, D, E, F", "A, C, F, B, D, E", "A, B, D, C, F, E"],
+      "correct": 1,
+      "explanation": "正解はBです。最初にAを訪れ、隣接するB、Cをキューへ入れます。次にBからD、E、CからFを追加するので、A→B→C→D→E→Fです。AやDは深さ優先に近い順序、Cは隣接頂点の追加順が条件と逆です。"
+    },
+    {
+      "id": "B0024",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "額面1、3、4の硬貨を何枚でも使える。dp[i]を金額iに必要な最少枚数とし、dp[0]=0、dp[i]=min(dp[i−1]+1, dp[i−3]+1, dp[i−4]+1)（負の添字は無視）で求める。dp[6]はどれか。",
+      "choices": ["1", "2", "3", "6"],
+      "correct": 1,
+      "explanation": "正解はBです。金額6は3+3の2枚で作れます。最大額面から選ぶ貪欲法では4+1+1の3枚になりますが最適ではありません。dp[6]ではdp[3]+1=2が最小です。1枚で額面6はなく、6枚は全て1の場合です。"
+    },
+    {
+      "id": "B0025",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "昇順配列Aからtargetの最初の位置を探す次の処理には、targetが中央要素と等しいとき候補から除外する不具合がある。whileの条件を変えずに修正する代入はどれか。配列の添字は1から始まる。\n\nlow ← 1\nhigh ← Aの要素数\nwhile (low < high)\n  mid ← (low + high) div 2\n  if (A[mid] < target)\n    low ← mid + 1\n  else\n    high ← mid − 1  /* 修正箇所 */\n  endif\nendwhile\nif (A[low] = target) return low\nreturn −1",
+      "choices": ["high ← mid", "low ← mid", "high ← low", "low ← mid − 1"],
+      "correct": 0,
+      "explanation": "正解はAです。A[mid]がtarget以上なら、mid自身が最初の位置である可能性を残す必要があるためhigh=midとします。low<highの間はmidがhighより小さくなるので範囲は縮小します。BとDは小さい側を正しく除外できず、Cは探索範囲を根拠なく一点へ潰します。"
+    }
+  ]
+}

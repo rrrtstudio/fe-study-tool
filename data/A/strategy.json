@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "A0022",
+      "exam": "A",
+      "category": "ストラテジ系",
+      "subcategory": "経営戦略・システム戦略",
+      "difficulty": 1,
+      "question": "企業の内部環境における強み・弱みと、外部環境における機会・脅威を整理する手法はどれか。",
+      "choices": ["SWOT分析", "PEST分析", "バリューチェーン分析", "3C分析"],
+      "correct": 0,
+      "explanation": "正解はAです。SWOT分析は内部のStrengths（強み）・Weaknesses（弱み）と、外部のOpportunities（機会）・Threats（脅威）を整理します。PESTは外部のマクロ環境、バリューチェーンは企業活動の価値創出、3Cは顧客・競合・自社を分析します。"
+    },
+    {
+      "id": "A0023",
+      "exam": "A",
+      "category": "ストラテジ系",
+      "subcategory": "経営戦略・システム戦略",
+      "difficulty": 2,
+      "question": "固定費が30万円、製品1個の販売価格が1,000円、変動費が400円のとき、損益分岐点販売数量は何個か。",
+      "choices": ["300個", "400個", "500個", "750個"],
+      "correct": 2,
+      "explanation": "正解はCです。1個当たりの限界利益は販売価格1,000－変動費400＝600円なので、損益分岐点数量は固定費300,000÷600＝500個です。Aは固定費を販売価格だけで割った値、Dは固定費を変動費だけで割った値です。分母には販売価格ではなく限界利益を使います。"
+    },
+    {
+      "id": "A0024",
+      "exam": "A",
+      "category": "ストラテジ系",
+      "subcategory": "経営戦略・システム戦略",
+      "difficulty": 1,
+      "question": "顧客との関係を継続的に管理し、満足度や収益性の向上を目指す考え方はどれか。",
+      "choices": ["CRM", "SCM", "ERP", "SFA"],
+      "correct": 0,
+      "explanation": "正解はAです。CRM（Customer Relationship Management）は顧客情報や接点を継続管理し、満足度や収益性を高めます。SCMは供給連鎖、ERPは企業資源全体、SFAは営業活動の支援・管理が中心です。顧客との長期的な関係という条件が判断軸です。"
+    }
+  ]
+}
