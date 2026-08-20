@@ -45,6 +45,37 @@ function validateQuestion(question, sourcePath, seenIds) {
   if (!Number.isInteger(question.difficulty) || question.difficulty < 1 || question.difficulty > 5) {
     issues.push(`${prefix}: difficultyは1〜5の整数で指定してください`);
   }
+  if (question.format !== undefined && !["standard", "long-code"].includes(question.format)) {
+    issues.push(`${prefix}: formatはstandardまたはlong-codeで指定してください`);
+  }
+  if (question.code !== undefined && (typeof question.code !== "string" || !question.code.trim())) {
+    issues.push(`${prefix}: codeは空でない文字列で指定してください`);
+  }
+  if (question.format === "long-code") {
+    const lines = typeof question.code === "string" ? question.code.trim().split(/\r?\n/).length : 0;
+    if (lines < 10 || lines > 30) issues.push(`${prefix}: long-codeには10〜30行のcodeが必要です`);
+  }
+  if (question.visual !== undefined) {
+    if (!question.visual || typeof question.visual !== "object" || Array.isArray(question.visual)) {
+      issues.push(`${prefix}: visualがオブジェクトではありません`);
+    } else {
+      if (question.visual.type !== "svg") issues.push(`${prefix}: visual.typeはsvgで指定してください`);
+      if (typeof question.visual.src !== "string" || !question.visual.src.trim() || /^(?:\/|https?:|data:)/i.test(question.visual.src)) {
+        issues.push(`${prefix}: visual.srcはサイト内の相対パスで指定してください`);
+      }
+      if (typeof question.visual.alt !== "string" || !question.visual.alt.trim()) issues.push(`${prefix}: visual.altが空です`);
+    }
+  }
+  if (question.table !== undefined) {
+    const headers = question.table?.headers;
+    const rows = question.table?.rows;
+    if (!Array.isArray(headers) || headers.length === 0 || headers.some((cell) => typeof cell !== "string" || !cell.trim())) {
+      issues.push(`${prefix}: table.headersが正しくありません`);
+    }
+    if (!Array.isArray(rows) || rows.length === 0 || !Array.isArray(headers) || rows.some((row) => !Array.isArray(row) || row.length !== headers.length || row.some((cell) => typeof cell !== "string"))) {
+      issues.push(`${prefix}: table.rowsの列数または値が正しくありません`);
+    }
+  }
 
   if (id !== "(IDなし)") seenIds.add(id);
   return issues;

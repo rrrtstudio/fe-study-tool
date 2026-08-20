@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "B0061",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "次の処理終了後のxは幾つか。",
+      "choices": [
+        "9",
+        "3",
+        "6",
+        "12"
+      ],
+      "correct": 0,
+      "explanation": "正解は「9」です。xは3から始まり、x×2で6、その後3を加えて9になります。代入は右辺を先に計算してから左辺へ保存します。",
+      "format": "standard",
+      "code": "x ← 3\nx ← x × 2\nx ← x + 3\n表示する(x)"
+    },
+    {
+      "id": "B0062",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "次の条件分岐で表示される文字はどれか。",
+      "choices": [
+        "B",
+        "A",
+        "C",
+        "何も表示しない"
+      ],
+      "correct": 0,
+      "explanation": "正解は「B」です。score=69は70以上ではないのでelse側のBを表示します。境界値70ならAになる点を区別します。",
+      "format": "standard",
+      "code": "score ← 69\nif score ≧ 70\n  表示する(\"A\")\nelse\n  表示する(\"B\")\nendif"
+    },
+    {
+      "id": "B0063",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "1から4までを順に加える処理の出力は幾つか。",
+      "choices": [
+        "10",
+        "4",
+        "6",
+        "15"
+      ],
+      "correct": 0,
+      "explanation": "正解は「10」です。sumは0から1、3、6、10と変化します。ループ回数ではなく累積値を追います。",
+      "format": "standard",
+      "code": "sum ← 0\nfor i を 1 から 4 まで 1 ずつ増やす\n  sum ← sum + i\nendfor\n表示する(sum)"
+    },
+    {
+      "id": "B0064",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 1,
+      "question": "配列の添字が0から始まるとき、表示される値はどれか。",
+      "choices": [
+        "30",
+        "20",
+        "40",
+        "添字範囲外エラー"
+      ],
+      "correct": 0,
+      "explanation": "正解は「30」です。a[2]は先頭から3番目なので30です。0始まりではa[0]が10、a[3]が40です。",
+      "format": "standard",
+      "code": "a ← {10, 20, 30, 40}\ni ← 2\n表示する(a[i])"
+    },
+    {
+      "id": "B0065",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "while文が終了したときのcountは幾つか。",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "8"
+      ],
+      "correct": 0,
+      "explanation": "正解は「4」です。nは20→10→5→2→1と4回更新され、そのたびcountが増えます。条件判定は更新前に行います。",
+      "format": "standard",
+      "code": "n ← 20\ncount ← 0\nwhile n > 1\n  n ← n div 2\n  count ← count + 1\nendwhile"
+    },
+    {
+      "id": "B0066",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "内側の表示処理は合計何回実行されるか。",
+      "choices": [
+        "6回",
+        "3回",
+        "8回",
+        "9回"
+      ],
+      "correct": 0,
+      "explanation": "正解は「6回」です。i=1では1回、i=2では2回、i=3では3回なので合計1+2+3=6回です。単純に3×3とはなりません。",
+      "format": "standard",
+      "code": "for i を 1 から 3 まで 1 ずつ増やす\n  for j を 1 から i まで 1 ずつ増やす\n    表示する(i, j)\n  endfor\nendfor"
+    },
+    {
+      "id": "B0067",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "処理終了後のminは幾つか。",
+      "choices": [
+        "2",
+        "4",
+        "7",
+        "9"
+      ],
+      "correct": 0,
+      "explanation": "正解は「2」です。先頭7を仮の最小値とし、4、2で更新します。9は2より大きいので更新されません。",
+      "format": "standard",
+      "code": "a ← {7, 4, 2, 9}\nmin ← a[0]\nfor i を 1 から 3 まで 1 ずつ増やす\n  if a[i] < min\n    min ← a[i]\n  endif\nendfor"
+    },
+    {
+      "id": "B0068",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "swap実行後の(x, y)はどれか。",
+      "choices": [
+        "(8, 5)",
+        "(5, 8)",
+        "(8, 8)",
+        "(5, 5)"
+      ],
+      "correct": 0,
+      "explanation": "正解は「(8, 5)」です。一時変数tに元のxを退避してから交換するので、xとyが入れ替わります。退避なしで上書きすると両方8になり得ます。",
+      "format": "standard",
+      "code": "x ← 5\ny ← 8\nt ← x\nx ← y\ny ← t"
+    },
+    {
+      "id": "B0069",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "文字列中の'A'を数える処理の出力は幾つか。",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "5"
+      ],
+      "correct": 0,
+      "explanation": "正解は「3」です。文字列ABACAの0、2、4番目がAなので3回です。文字数5や異なる文字数2と混同しません。",
+      "format": "standard",
+      "code": "s ← \"ABACA\"\ncount ← 0\nfor i を 0 から 4 まで 1 ずつ増やす\n  if s[i] = 'A'\n    count ← count + 1\n  endif\nendfor"
+    },
+    {
+      "id": "B0070",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "空のスタックにpush(3), push(7), pop(), push(5)を順に行った後、最上部の値はどれか。",
+      "choices": [
+        "5",
+        "3",
+        "7",
+        "空"
+      ],
+      "correct": 0,
+      "explanation": "正解は「5」です。LIFOなので7をpopした後に5を積み、最上部は5です。3は底に残り、7は既に取り出されています。キューのFIFOと混同しないようにします。",
+      "format": "standard",
+      "code": "push(3)\npush(7)\npop()\npush(5)\n表示する(top())"
+    },
+    {
+      "id": "B0071",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "空のキューにenqueue(3), enqueue(7), dequeue(), enqueue(5)を順に行った後、先頭の値はどれか。",
+      "choices": [
+        "7",
+        "3",
+        "5",
+        "空"
+      ],
+      "correct": 0,
+      "explanation": "正解は「7」です。FIFOなので最初のdequeueで3が出ます。残った7の後ろに5が入り、先頭は7です。",
+      "format": "standard",
+      "code": "enqueue(3)\nenqueue(7)\ndequeue()\nenqueue(5)\n表示する(front())"
+    },
+    {
+      "id": "B0072",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "昇順配列を二分探索する。最初の比較でkey=18より中央要素24が大きいとき、次に探索する範囲はどれか。",
+      "choices": [
+        "中央より左側",
+        "中央より右側",
+        "中央要素だけ",
+        "配列全体を先頭から"
+      ],
+      "correct": 0,
+      "explanation": "正解は「中央より左側」です。24>18なので、昇順配列では24より右に18はありません。上限をmid−1へ移して左半分を調べます。",
+      "format": "standard",
+      "code": "left ← 0\nright ← 要素数 - 1\nmid ← (left + right) div 2\nif a[mid] > key\n  right ← mid - 1\nendif"
+    },
+    {
+      "id": "B0073",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "単方向リストでノードPの直後へNを挿入するとき、ポインタ更新の正しい順はどれか。",
+      "choices": [
+        "N.next←P.next の後に P.next←N",
+        "P.next←N の後に N.next←P.next",
+        "N.next←N の後に P.next←N",
+        "P.nextだけをNにする"
+      ],
+      "correct": 0,
+      "explanation": "正解は「N.next←P.next の後に P.next←N」です。先に元の後続をNへ保存しないと、P.nextを上書きした時点で後続部分への参照を失います。2本のリンクを順に更新します。",
+      "format": "standard",
+      "code": "N.next ← P.next\nP.next ← N"
+    },
+    {
+      "id": "B0074",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "短絡評価を行う言語で、表示される値はどれか。",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "0による除算エラー"
+      ],
+      "correct": 0,
+      "explanation": "正解は「0」です。x=0なのでANDの左辺が偽と確定し、右辺10 div xは評価されません。したがってエラーにならず0を表示します。",
+      "format": "standard",
+      "code": "x ← 0\nif (x ≠ 0) AND (10 div x > 1)\n  表示する(1)\nelse\n  表示する(0)\nendif"
+    },
+    {
+      "id": "B0075",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "選択ソートの第1回目終了後の配列はどれか。各回で未整列部分の最小値を先頭と交換する。",
+      "choices": [
+        "{2, 7, 5, 4}",
+        "{4, 7, 5, 2}",
+        "{2, 4, 5, 7}",
+        "{7, 5, 4, 2}"
+      ],
+      "correct": 0,
+      "explanation": "正解は「{2, 7, 5, 4}」です。全体の最小値2を探して先頭7と交換するため{2,7,5,4}です。全体が整列するのは全ての回を終えた後です。",
+      "format": "standard",
+      "code": "a ← {7, 4, 5, 2}\nminIndex ← 0\nfor j を 1 から 3 まで\n  if a[j] < a[minIndex]\n    minIndex ← j\n  endif\nendfor\nswap(a[0], a[minIndex])"
+    },
+    {
+      "id": "B0076",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "挿入ソートで整列済み部分{2,5,8}へ6を挿入した結果はどれか。",
+      "choices": [
+        "{2, 5, 6, 8}",
+        "{2, 6, 5, 8}",
+        "{6, 2, 5, 8}",
+        "{2, 5, 8, 6}"
+      ],
+      "correct": 0,
+      "explanation": "正解は「{2, 5, 6, 8}」です。末尾8を右へずらし、5より大きい位置へ6を置きます。挿入位置を空けるため、大きい要素を後ろから移動します。",
+      "format": "standard",
+      "code": "a ← {2, 5, 8, 6}\nkey ← a[3]\nj ← 2\nwhile j ≧ 0 AND a[j] > key\n  a[j + 1] ← a[j]\n  j ← j - 1\nendwhile\na[j + 1] ← key"
+    },
+    {
+      "id": "B0077",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "昇順列L={1,6,9}とR={2,4,8}をマージする。1,2,4まで出力済みのとき次の値はどれか。",
+      "choices": [
+        "6",
+        "8",
+        "9",
+        "1"
+      ],
+      "correct": 0,
+      "explanation": "正解は「6」です。未出力先頭はLの6とRの8なので小さい6を出します。9はLでも6の後、8は6より大きく、1は出力済みです。各列内部の順序は崩しません。",
+      "format": "standard",
+      "code": "while LとRの両方に未出力要素がある\n  if Lの先頭 ≦ Rの先頭\n    Lの先頭を出力する\n  else\n    Rの先頭を出力する\n  endif\nendwhile"
+    },
+    {
+      "id": "B0078",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "fact(4)の戻り値は幾つか。",
+      "choices": [
+        "24",
+        "10",
+        "16",
+        "120"
+      ],
+      "correct": 0,
+      "explanation": "正解は「24」です。fact(4)=4×3×2×1=24です。再帰はn=1で止まり、戻りながら積を作ります。10は和、16は4×4、120はfact(5)との混同です。",
+      "format": "standard",
+      "code": "function fact(n)\n  if n ≦ 1\n    return 1\n  endif\n  return n × fact(n - 1)\nendfunction\n表示する(fact(4))"
+    },
+    {
+      "id": "B0079",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "ユークリッドの互除法でgcd(84,30)を求めた結果はどれか。",
+      "choices": [
+        "6",
+        "2",
+        "12",
+        "54"
+      ],
+      "correct": 0,
+      "explanation": "正解は「6」です。84 mod 30=24、30 mod 24=6、24 mod 6=0なので最大公約数は6です。差84−30=54は途中の余りではありません。",
+      "format": "standard",
+      "code": "function gcd(a, b)\n  while b ≠ 0\n    r ← a mod b\n    a ← b\n    b ← r\n  endwhile\n  return a\nendfunction"
+    },
+    {
+      "id": "B0080",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "隣接頂点を表の順でキューへ入れる幅優先探索の訪問順はどれか。開始点はAである。",
+      "choices": [
+        "A, B, C, D, E",
+        "A, B, D, C, E",
+        "A, C, E, B, D",
+        "A, D, E, B, C"
+      ],
+      "correct": 0,
+      "explanation": "正解は「A, B, C, D, E」です。Aの隣B,C、次にBからD、CからEがキューへ入るのでA,B,C,D,Eです。幅優先探索は同じ距離の頂点を先に処理します。",
+      "format": "standard",
+      "code": "enqueue(A)\nwhile queueが空でない\n  v ← dequeue()\n  if vが未訪問\n    vを訪問済みにする\n    未訪問の隣接頂点を表の順にenqueueする\n  endif\nendwhile",
+      "table": {
+        "headers": [
+          "頂点",
+          "隣接頂点"
+        ],
+        "rows": [
+          [
+            "A",
+            "B,C"
+          ],
+          [
+            "B",
+            "D"
+          ],
+          [
+            "C",
+            "D,E"
+          ],
+          [
+            "D",
+            ""
+          ],
+          [
+            "E",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0081",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "隣接頂点を表の順で再帰する深さ優先探索の訪問順はどれか。開始点はAである。",
+      "choices": [
+        "A, B, D, E, C",
+        "A, B, C, D, E",
+        "A, C, E, D, B",
+        "A, D, B, E, C"
+      ],
+      "correct": 0,
+      "explanation": "正解は「A, B, D, E, C」です。A→B→D→Eまで深く進み、戻ってAの次の隣接Cを訪問します。訪問済み判定によりDやEは再訪しません。",
+      "format": "standard",
+      "code": "procedure dfs(v)\n  vを訪問済みにする\n  表の順で各隣接頂点wについて\n    if wが未訪問\n      dfs(w)\n    endif\n  endfor\nendprocedure",
+      "table": {
+        "headers": [
+          "頂点",
+          "隣接頂点"
+        ],
+        "rows": [
+          [
+            "A",
+            "B,C"
+          ],
+          [
+            "B",
+            "D,E"
+          ],
+          [
+            "C",
+            "E"
+          ],
+          [
+            "D",
+            "E"
+          ],
+          [
+            "E",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0082",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "大きさ7のハッシュ表へh(k)=k mod 7、線形探索法で10,17,24を順に格納する。24の格納位置はどれか。",
+      "choices": [
+        "5",
+        "3",
+        "4",
+        "6"
+      ],
+      "correct": 0,
+      "explanation": "正解は「5」です。3つとも初期位置は3です。10が3、17が4を使うので24は次の空き5へ入ります。衝突のたび1ずつ進みます。",
+      "format": "standard",
+      "code": "for key in {10, 17, 24}\n  i ← key mod 7\n  while table[i]が使用中\n    i ← (i + 1) mod 7\n  endwhile\n  table[i] ← key\nendfor"
+    },
+    {
+      "id": "B0083",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "最大ヒープ{9,7,8,2,5}から最大値を削除し、末尾5を根へ移して再ヒープ化した結果はどれか。",
+      "choices": [
+        "{8, 7, 5, 2}",
+        "{7, 5, 8, 2}",
+        "{5, 7, 8, 2}",
+        "{8, 5, 7, 2}"
+      ],
+      "correct": 0,
+      "explanation": "正解は「{8, 7, 5, 2}」です。根5の子は7と8なので大きい8と交換します。新しい位置の5に子はなく、{8,7,5,2}で最大ヒープになります。",
+      "format": "standard",
+      "code": "root ← heap[0]\nheap[0] ← heap[last]\nlastを削除する\nwhile 子があり親より大きい\n  大きい方の子と交換する\nendwhile"
+    },
+    {
+      "id": "B0084",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "累積和p[0]=0、p[i+1]=p[i]+a[i]とする。a={3,1,4,2,5}の添字1～3の和はどれか。",
+      "choices": [
+        "7",
+        "6",
+        "9",
+        "10"
+      ],
+      "correct": 0,
+      "explanation": "正解は「7」です。区間[1,3]はp[4]−p[1]=(3+1+4+2)−3=7です。要素は1+4+2です。右端を含むためp[r+1]を使います。",
+      "format": "standard",
+      "code": "p[0] ← 0\nfor i を 0 から 4 まで\n  p[i + 1] ← p[i] + a[i]\nendfor\nleft ← 1\nright ← 3\nanswer ← p[right + 1] - p[left]"
+    },
+    {
+      "id": "B0085",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "文字列AAABBCCCCを（文字,連続数）でランレングス符号化した結果はどれか。",
+      "choices": [
+        "(A,3)(B,2)(C,3)",
+        "(A,3)(B,2)(C,4)",
+        "(A,2)(B,3)(C,4)",
+        "(A,3)(B,1)(C,4)"
+      ],
+      "correct": 1,
+      "explanation": "正解は「(A,3)(B,2)(C,4)」です。先頭から同じ文字の連続を数えるとAが3、Bが2、Cが4です。文字全体の出現数ではなく連続区間ごとに記録します。",
+      "format": "standard",
+      "code": "current ← s[0]\ncount ← 1\nfor i を 1 から length(s)-1 まで\n  if s[i] = current\n    count ← count + 1\n  else\n    (current, count)を出力する\n    current ← s[i]\n    count ← 1\n  endif\nendfor"
+    },
+    {
+      "id": "B0086",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "同じ点数の要素について入力順を保つ安定ソートの結果はどれか。",
+      "choices": [
+        "(A,80),(C,80),(B,70),(D,70)",
+        "(B,70),(D,70),(A,80),(C,80)",
+        "(D,70),(B,70),(C,80),(A,80)",
+        "(B,70),(D,70),(C,80),(A,80)"
+      ],
+      "correct": 1,
+      "explanation": "正解は「(B,70),(D,70),(A,80),(C,80)」です。点数で昇順にし、同点70ではBがDより先、同点80ではAがCより先の入力順を保ちます。安定性は同じキーの相対順序に関する性質です。",
+      "format": "standard",
+      "code": "recordsを点数の昇順で安定ソートする\n各recordを順に表示する",
+      "table": {
+        "headers": [
+          "入力順",
+          "名前",
+          "点数"
+        ],
+        "rows": [
+          [
+            "1",
+            "A",
+            "80"
+          ],
+          [
+            "2",
+            "B",
+            "70"
+          ],
+          [
+            "3",
+            "C",
+            "80"
+          ],
+          [
+            "4",
+            "D",
+            "70"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0087",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "有向グラフで各頂点を白・灰・黒に塗る深さ優先探索中、閉路を示す辺はどれか。",
+      "choices": [
+        "出次数0の頂点への辺",
+        "灰色の頂点への辺",
+        "白色の頂点への辺",
+        "黒色の頂点への辺だけ"
+      ],
+      "correct": 1,
+      "explanation": "正解は「灰色の頂点への辺」です。灰色は現在の再帰経路上にある頂点です。そこへ戻る辺は祖先への後退辺なので閉路を示します。黒色は探索完了済みです。",
+      "format": "standard",
+      "code": "dfs(v):\n  color[v] ← 灰\n  for each w in adj[v]\n    if color[w] = 灰\n      閉路あり\n    else if color[w] = 白\n      dfs(w)\n    endif\n  endfor\n  color[v] ← 黒"
+    },
+    {
+      "id": "B0088",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "辺A→C、B→C、C→D、B→EがあるDAGのトポロジカル順として適切なものはどれか。",
+      "choices": [
+        "B, C, A, E, D",
+        "B, A, C, E, D",
+        "C, A, B, D, E",
+        "A, C, B, D, E"
+      ],
+      "correct": 1,
+      "explanation": "正解は「B, A, C, E, D」です。全ての辺で始点が終点より前に必要です。B,A,C,E,DはAとBがCより前、CがDより前、BがEより前です。他は少なくとも一辺に逆らいます。",
+      "format": "standard",
+      "code": "各頂点の入次数を求める\n入次数0の頂点をキューへ入れる\nwhile キューが空でない\n  vを取り出して出力する\n  vから出る辺を除いて入次数0を追加する\nendwhile"
+    },
+    {
+      "id": "B0089",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "集合{2,3,7}から各要素を高々1回選び、合計5を作れるかをビット集合で調べる。到達可能な合計はどれか。",
+      "choices": [
+        "7以下は全て到達可能",
+        "5は到達可能",
+        "5は到達不能",
+        "偶数だけ到達可能"
+      ],
+      "correct": 1,
+      "explanation": "正解は「5は到達可能」です。初期bit0=1から2でbit2、3でbit3とbit5が立ちます。5は2+3で作れますが1や4は作れず、7以下全部ではありません。",
+      "format": "standard",
+      "code": "bits ← 1  // 合計0だけ可能\nfor x in {2, 3, 7}\n  bits ← bits OR (bits << x)\nendfor\nif bitsの5番目が1\n  表示する(\"可能\")\nendif"
+    },
+    {
+      "id": "B0090",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "二分探索コードでkeyが末尾にある場合も調べるための修正はどれか。",
+      "choices": [
+        "leftとrightを毎回0に戻す",
+        "while left ≦ right にする",
+        "while left < right のままmidを削除する",
+        "right←midにする"
+      ],
+      "correct": 1,
+      "explanation": "正解は「while left ≦ right にする」です。閉区間[left,right]を探索するならleft=rightの最後の1要素も比較する必要があり、条件はleft≦rightです。right←midでは範囲が縮まらない場合があります。",
+      "format": "standard",
+      "code": "left ← 0\nright ← length(a) - 1\nwhile left < right  // バグ\n  mid ← (left + right) div 2\n  if a[mid] = key\n    return mid\n  else if a[mid] < key\n    left ← mid + 1\n  else\n    right ← mid - 1\n  endif\nendwhile"
+    }
+  ]
+}

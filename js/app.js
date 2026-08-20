@@ -34,6 +34,14 @@ const elements = {
   questionNumber: document.querySelector("#question-number"),
   questionDifficulty: document.querySelector("#question-difficulty"),
   questionHeading: document.querySelector("#question-heading"),
+  questionSupplement: document.querySelector("#question-supplement"),
+  questionVisualWrap: document.querySelector("#question-visual-wrap"),
+  questionVisual: document.querySelector("#question-visual"),
+  questionVisualStatus: document.querySelector("#question-visual-status"),
+  questionTableWrap: document.querySelector("#question-table-wrap"),
+  questionTableHead: document.querySelector("#question-table-head"),
+  questionTableBody: document.querySelector("#question-table-body"),
+  questionCode: document.querySelector("#question-code"),
   answerForm: document.querySelector("#answer-form"),
   choiceList: document.querySelector("#choice-list"),
   answerButton: document.querySelector("#answer-button"),
@@ -196,6 +204,54 @@ function updateQuizProgress(answered = false) {
   elements.quizProgress.querySelector("span").style.width = `${percent}%`;
 }
 
+function renderQuestionSupplement(question) {
+  const hasVisual = Boolean(question.visual);
+  const hasTable = Boolean(question.table);
+  const hasCode = typeof question.code === "string" && question.code.trim();
+  elements.questionSupplement.hidden = !(hasVisual || hasTable || hasCode);
+
+  elements.questionVisualWrap.hidden = !hasVisual;
+  elements.questionVisualStatus.hidden = true;
+  elements.questionVisualStatus.textContent = "";
+  elements.questionVisual.removeAttribute("src");
+  elements.questionVisual.alt = "";
+  elements.questionVisual.onload = null;
+  elements.questionVisual.onerror = null;
+  if (hasVisual) {
+    elements.questionVisual.alt = question.visual.alt;
+    elements.questionVisual.onerror = () => {
+      elements.questionVisual.removeAttribute("src");
+      elements.questionVisualStatus.textContent = "図を読み込めませんでした。ページを再読み込みしてください。";
+      elements.questionVisualStatus.hidden = false;
+    };
+    elements.questionVisual.src = question.visual.src;
+  }
+
+  elements.questionTableWrap.hidden = !hasTable;
+  elements.questionTableHead.replaceChildren();
+  elements.questionTableBody.replaceChildren();
+  if (hasTable) {
+    question.table.headers.forEach((header) => {
+      const cell = document.createElement("th");
+      cell.scope = "col";
+      cell.textContent = header;
+      elements.questionTableHead.append(cell);
+    });
+    question.table.rows.forEach((values) => {
+      const row = document.createElement("tr");
+      values.forEach((value) => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.append(cell);
+      });
+      elements.questionTableBody.append(row);
+    });
+  }
+
+  elements.questionCode.hidden = !hasCode;
+  elements.questionCode.textContent = hasCode ? question.code : "";
+}
+
 function renderQuestion() {
   const question = getCurrentQuestion(state.session);
   const position = state.session.index + 1;
@@ -207,6 +263,7 @@ function renderQuestion() {
   elements.questionNumber.textContent = `Q${position}`;
   elements.questionDifficulty.textContent = `難易度 ${question.difficulty} / 5`;
   elements.questionHeading.textContent = question.question;
+  renderQuestionSupplement(question);
   elements.choiceList.replaceChildren();
 
   question.choices.forEach((choice, index) => {
@@ -301,7 +358,14 @@ function renderWrongReview(wrongAnswers) {
     const explanationLabel = document.createElement("strong");
     explanationLabel.textContent = "解説：";
     explanation.append(explanationLabel, question.explanation);
-    body.append(selected, correct, explanation);
+    body.append(selected, correct);
+    if (question.code) {
+      const code = document.createElement("pre");
+      code.className = "wrong-code";
+      code.textContent = question.code;
+      body.append(code);
+    }
+    body.append(explanation);
     details.append(summary, body);
     elements.wrongReviewList.append(details);
   });

@@ -1,0 +1,1327 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "B0091",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "累積和を作って区間left=1からright=4（両端を含む）の和を求める。表示値は幾つか。",
+      "choices": [
+        "14",
+        "10",
+        "8",
+        "12"
+      ],
+      "correct": 1,
+      "explanation": "正解は「10」です。p={0,2,3,6,10,12}となり、p[5]−p[1]=12−2=10です。0始まりの閉区間なので右端の次を使います。",
+      "format": "long-code",
+      "code": "a ← {2, 1, 3, 4, 2}\nn ← length(a)\np[0] ← 0\nfor i を 0 から n - 1 まで\n  p[i + 1] ← p[i] + a[i]\nendfor\nleft ← 1\nright ← 4\nanswer ← p[right + 1] - p[left]\n表示する(answer)"
+    },
+    {
+      "id": "B0092",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 2,
+      "question": "3×3行列の外周要素だけを合計する。表示値は幾つか。",
+      "choices": [
+        "50",
+        "40",
+        "35",
+        "45"
+      ],
+      "correct": 1,
+      "explanation": "正解は「40」です。1～9の合計45から中央5を除いた40です。条件は先頭行・末尾行・先頭列・末尾列の和集合で、角は1回だけ加えます。",
+      "format": "long-code",
+      "code": "m ← {{1,2,3},{4,5,6},{7,8,9}}\nrows ← 3\ncols ← 3\nsum ← 0\nfor r を 0 から rows - 1 まで\n  for c を 0 から cols - 1 まで\n    if r = 0 OR r = rows-1 OR c = 0 OR c = cols-1\n      sum ← sum + m[r][c]\n    endif\n  endfor\nendfor\n表示する(sum)"
+    },
+    {
+      "id": "B0093",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "昇順配列から重複をその場で除き、先頭へ異なる値を詰める。処理後のnewLengthは幾つか。",
+      "choices": [
+        "6",
+        "3",
+        "2",
+        "4"
+      ],
+      "correct": 1,
+      "explanation": "正解は「3」です。残る異なる値は1,2,4の3個です。writeは新しい値を見つけるたびに増え、重複回数は数えません。",
+      "format": "long-code",
+      "code": "a ← {1, 1, 2, 2, 2, 4}\nn ← length(a)\nwrite ← 1\nfor read を 1 から n - 1 まで\n  if a[read] ≠ a[write - 1]\n    a[write] ← a[read]\n    write ← write + 1\n  endif\nendfor\nnewLength ← write\nfor i を 0 から newLength - 1 まで\n  表示する(a[i])\nendfor"
+    },
+    {
+      "id": "B0094",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "括弧列\"([{}])\"をスタックで検査した結果はどれか。",
+      "choices": [
+        "閉じ括弧が不足",
+        "正しい括弧列",
+        "3文字目で不一致",
+        "5文字目で不一致"
+      ],
+      "correct": 1,
+      "explanation": "正解は「正しい括弧列」です。各閉じ括弧は直前の対応する開き括弧と一致し、最後にスタックが空になります。種類だけでなく入れ子の順もLIFOで検査します。",
+      "format": "long-code",
+      "code": "s ← \"([{}])\"\nstack ← 空\nfor each ch in s\n  if ch が開き括弧\n    push(ch)\n  else\n    if stackが空\n      return false\n    endif\n    open ← pop()\n    if openとchが対応しない\n      return false\n    endif\n  endif\nendfor\nreturn stackが空"
+    },
+    {
+      "id": "B0095",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "幅優先探索で頂点AからDまでの最短辺数を求める。表示値は幾つか。隣接関係は表のとおりとする。",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "correct": 1,
+      "explanation": "正解は「2」です。AからBとCが距離1、BからDが距離2です。幅優先探索で初めて距離を設定した時点が最短辺数になります。",
+      "format": "long-code",
+      "code": "for each v\n  dist[v] ← -1\nendfor\ndist[A] ← 0\nenqueue(A)\nwhile queueが空でない\n  v ← dequeue()\n  for each w in adj[v]\n    if dist[w] = -1\n      dist[w] ← dist[v] + 1\n      enqueue(w)\n    endif\n  endfor\nendwhile\n表示する(dist[D])",
+      "table": {
+        "headers": [
+          "頂点",
+          "隣接頂点"
+        ],
+        "rows": [
+          [
+            "A",
+            "B,C"
+          ],
+          [
+            "B",
+            "D"
+          ],
+          [
+            "C",
+            "D,E"
+          ],
+          [
+            "D",
+            "E"
+          ],
+          [
+            "E",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0096",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "再帰的深さ優先探索で、子を全て処理した後に頂点を出力する。Aから開始した出力順はどれか。",
+      "choices": [
+        "E, D, B, F, C, A",
+        "D, E, B, F, C, A",
+        "A, B, D, E, C, F",
+        "D, B, E, A, F, C"
+      ],
+      "correct": 1,
+      "explanation": "正解は「D, E, B, F, C, A」です。Bの子D,Eを出してB、Cの子Fを出してC、最後にAです。これは行きがけ順ではなく帰りがけ順です。",
+      "format": "long-code",
+      "code": "procedure dfs(v)\n  visited[v] ← true\n  for each w in adj[v] を表の順に\n    if NOT visited[w]\n      dfs(w)\n    endif\n  endfor\n  表示する(v)\nendprocedure\nfor each v\n  visited[v] ← false\nendfor\ndfs(A)",
+      "table": {
+        "headers": [
+          "頂点",
+          "隣接頂点"
+        ],
+        "rows": [
+          [
+            "A",
+            "B,C"
+          ],
+          [
+            "B",
+            "D,E"
+          ],
+          [
+            "C",
+            "F"
+          ],
+          [
+            "D",
+            ""
+          ],
+          [
+            "E",
+            ""
+          ],
+          [
+            "F",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0097",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "二分探索でkey=31を見つけるまで、配列要素との比較は何回か。",
+      "choices": [
+        "4回",
+        "2回",
+        "1回",
+        "3回"
+      ],
+      "correct": 1,
+      "explanation": "正解は「2回」です。最初のmid=3で19と比較して右半分へ進み、次のmid=5で31と一致します。添字更新回数ではなく要素比較回数は2回です。",
+      "format": "long-code",
+      "code": "a ← {3, 8, 12, 19, 24, 31, 42}\nkey ← 31\nleft ← 0\nright ← length(a) - 1\ncount ← 0\nwhile left ≦ right\n  mid ← (left + right) div 2\n  count ← count + 1\n  if a[mid] = key\n    break\n  else if a[mid] < key\n    left ← mid + 1\n  else\n    right ← mid - 1\n  endif\nendwhile\n表示する(count)"
+    },
+    {
+      "id": "B0098",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "昇順配列で6以上となる最初の位置を返すlowerBoundの結果はどれか。添字は0から始まる。",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "correct": 1,
+      "explanation": "正解は「2」です。a[2]=6が条件を満たす最初の要素です。同じ6が複数あっても、条件を満たしたときright=midとして左側をさらに調べます。",
+      "format": "long-code",
+      "code": "a ← {2, 4, 6, 6, 9}\nkey ← 6\nleft ← 0\nright ← length(a)\nwhile left < right\n  mid ← (left + right) div 2\n  if a[mid] < key\n    left ← mid + 1\n  else\n    right ← mid\n  endif\nendwhile\n表示する(left)"
+    },
+    {
+      "id": "B0099",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "ボトムアップマージソートで幅width=1の処理を全区間へ1回行った直後の配列はどれか。",
+      "choices": [
+        "{7,2,5,1,9,3}",
+        "{2,7,1,5,3,9}",
+        "{1,2,3,5,7,9}",
+        "{2,1,7,5,3,9}"
+      ],
+      "correct": 1,
+      "explanation": "正解は「{2,7,1,5,3,9}」です。隣り合う1要素列をそれぞれマージし、(7,2)→(2,7)、(5,1)→(1,5)、(9,3)→(3,9)となります。まだ列同士は統合しません。",
+      "format": "long-code",
+      "code": "a ← {7, 2, 5, 1, 9, 3}\nn ← length(a)\nwidth ← 1\nleft ← 0\nwhile left < n\n  mid ← min(left + width, n)\n  right ← min(left + 2 × width, n)\n  i ← left\n  j ← mid\n  temp ← 空配列\n  while i < mid AND j < right\n    小さい方をtempへ追加する\n  endwhile\n  残った要素をtempへ追加する\n  tempをa[left..right-1]へ戻す\n  left ← left + 2 × width\nendwhile"
+    },
+    {
+      "id": "B0100",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "末尾要素5をピボットとするLomuto分割を1回行う。処理後の配列とピボット位置はどれか。",
+      "choices": [
+        "{5,2,3,4,7}、位置0",
+        "{4,2,3,5,7}、位置3",
+        "{2,3,4,5,7}、位置3",
+        "{4,2,7,3,5}、位置4"
+      ],
+      "correct": 1,
+      "explanation": "正解は「{4,2,3,5,7}、位置3」です。5以下の4,2,3が前方へ集まり、最後にピボット5と7を交換します。前方部分の内部が完全整列するわけではありません。",
+      "format": "long-code",
+      "code": "a ← {4, 2, 7, 3, 5}\nlow ← 0\nhigh ← 4\npivot ← a[high]\ni ← low - 1\nfor j を low から high - 1 まで\n  if a[j] ≦ pivot\n    i ← i + 1\n    swap(a[i], a[j])\n  endif\nendfor\nswap(a[i + 1], a[high])\npivotIndex ← i + 1\n表示する(a, pivotIndex)"
+    },
+    {
+      "id": "B0101",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "最大ヒープへ10を追加した後の配列はどれか。",
+      "choices": [
+        "{9,7,8,2,5,10}",
+        "{10,7,9,2,5,8}",
+        "{9,7,10,2,5,8}",
+        "{10,9,8,2,5,7}"
+      ],
+      "correct": 1,
+      "explanation": "正解は「{10,7,9,2,5,8}」です。末尾に10を置き、親8と交換、さらに親9と交換して根へ上がります。兄弟7や他の部分まで並べ替える必要はありません。",
+      "format": "long-code",
+      "code": "heap ← {9, 7, 8, 2, 5}\nx ← 10\nheapの末尾へxを追加する\ni ← length(heap) - 1\nwhile i > 0\n  parent ← (i - 1) div 2\n  if heap[parent] ≧ heap[i]\n    break\n  endif\n  swap(heap[parent], heap[i])\n  i ← parent\nendwhile\n表示する(heap)"
+    },
+    {
+      "id": "B0102",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "線形探索法のハッシュ表でキー10を削除済み印にした後、キー24を探索した結果はどれか。",
+      "choices": [
+        "表を一周しても見つからない",
+        "位置5で見つかる",
+        "位置3で探索を終了し見つからない",
+        "位置4で見つかる"
+      ],
+      "correct": 1,
+      "explanation": "正解は「位置5で見つかる」です。初期位置3の削除済み印では探索を継続し、位置4の17を経て位置5の24を発見します。単なる空きへ戻すと探索連鎖が切れます。",
+      "format": "long-code",
+      "code": "table[3] ← DELETED\ntable[4] ← 17\ntable[5] ← 24\nkey ← 24\ni ← key mod 7\nstart ← i\nrepeat\n  if table[i] = EMPTY\n    return NOT_FOUND\n  endif\n  if table[i] = key\n    return i\n  endif\n  i ← (i + 1) mod 7\nuntil i = start\nreturn NOT_FOUND"
+    },
+    {
+      "id": "B0103",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "単方向リスト2→5→8を反転した後、先頭からの並びはどれか。",
+      "choices": [
+        "8→2→5",
+        "8→5→2",
+        "2→8→5",
+        "5→2→8"
+      ],
+      "correct": 1,
+      "explanation": "正解は「8→5→2」です。各ノードのnextを直前ノードへ向け直します。最後にprevが元の末尾8を指し、新しい先頭になります。",
+      "format": "long-code",
+      "code": "current ← head\nprev ← null\nwhile current ≠ null\n  nextNode ← current.next\n  current.next ← prev\n  prev ← current\n  current ← nextNode\nendwhile\nhead ← prev\np ← head\nwhile p ≠ null\n  表示する(p.value)\n  p ← p.next\nendwhile"
+    },
+    {
+      "id": "B0104",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "容量5の循環キューへ記載順に操作した後、先頭値と要素数はどれか。",
+      "choices": [
+        "D、2個",
+        "C、3個",
+        "B、3個",
+        "C、4個"
+      ],
+      "correct": 1,
+      "explanation": "正解は「C、3個」です。A,B,Cを入れAを出し、D,Eを入れ、次にBを出します。残りはC,D,Eの3個で先頭Cです。配列上の添字が周回してもFIFO順は変わりません。",
+      "format": "long-code",
+      "code": "capacity ← 5\nfront ← 0\nrear ← 0\ncount ← 0\nenqueue(A)\nenqueue(B)\nenqueue(C)\ndequeue()  // A\nenqueue(D)\nenqueue(E)\ndequeue()  // B\nvalue ← queue[front]\n表示する(value, count)"
+    },
+    {
+      "id": "B0105",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "頂点0～4へunionを3回行った後、連結成分数は幾つか。",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "correct": 1,
+      "explanation": "正解は「2」です。0-1と2-3を作り、1-2で二つが統合され0,1,2,3が一成分になります。4が単独なので合計2成分です。",
+      "format": "long-code",
+      "code": "for v を 0 から 4 まで\n  parent[v] ← v\n  size[v] ← 1\nendfor\ncomponents ← 5\nunion(0, 1)\nunion(2, 3)\nunion(1, 2)\nprocedure union(a, b)\n  ra ← find(a)\n  rb ← find(b)\n  if ra ≠ rb\n    小さい木を大きい木へつなぐ\n    components ← components - 1\n  endif\nendprocedure\n表示する(components)"
+    },
+    {
+      "id": "B0106",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "入次数0の頂点を番号の小さい順に取り出すKahn法で、出力順はどれか。",
+      "choices": [
+        "2,3,0,1,4",
+        "0,1,2,3,4",
+        "1,0,3,2,4",
+        "0,2,1,3,4"
+      ],
+      "correct": 1,
+      "explanation": "正解は「0,1,2,3,4」です。初期の入次数0は0,1です。0の後も2には1からの辺が残り、1を出すと2,3が0になります。小さい順に2,3、最後に4です。",
+      "format": "long-code",
+      "code": "各頂点のindegreeを0にする\nfor each edge (u, v)\n  indegree[v] ← indegree[v] + 1\nendfor\n入次数0を最小優先度キューへ入れる\nresult ← 空配列\nwhile queueが空でない\n  v ← 最小値を取り出す\n  resultへvを追加する\n  for each w in adj[v]\n    indegree[w] ← indegree[w] - 1\n    if indegree[w] = 0\n      queueへwを入れる\n    endif\n  endfor\nendwhile\n表示する(result)",
+      "table": {
+        "headers": [
+          "辺"
+        ],
+        "rows": [
+          [
+            "0→2"
+          ],
+          [
+            "1→2"
+          ],
+          [
+            "1→3"
+          ],
+          [
+            "2→4"
+          ],
+          [
+            "3→4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0107",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "非負重みグラフへダイクストラ法を適用する。AからEへの最短距離はどれか。",
+      "choices": [
+        "10",
+        "7",
+        "6",
+        "8"
+      ],
+      "correct": 1,
+      "explanation": "正解は「7」です。A→B→C→D→Eは2+1+3+1=7です。A→C→D→Eは8、A→B→D→Eは10で、優先度キューから確定距離の小さい順に緩和します。",
+      "format": "long-code",
+      "code": "for each v\n  dist[v] ← INF\nendfor\ndist[A] ← 0\npush(queue, (0, A))\nwhile queueが空でない\n  (d, v) ← 最小距離を取り出す\n  if d ≠ dist[v]\n    continue\n  endif\n  for each edge (v, w, cost)\n    if dist[w] > d + cost\n      dist[w] ← d + cost\n      push(queue, (dist[w], w))\n    endif\n  endfor\nendwhile\n表示する(dist[E])",
+      "table": {
+        "headers": [
+          "辺",
+          "重み"
+        ],
+        "rows": [
+          [
+            "A-B",
+            "2"
+          ],
+          [
+            "A-C",
+            "4"
+          ],
+          [
+            "B-C",
+            "1"
+          ],
+          [
+            "B-D",
+            "7"
+          ],
+          [
+            "C-D",
+            "3"
+          ],
+          [
+            "D-E",
+            "1"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0108",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "硬貨{1,3,4}を何枚でも使って金額6を作る最少枚数は幾つか。",
+      "choices": [
+        "4枚",
+        "6枚",
+        "2枚",
+        "3枚"
+      ],
+      "correct": 2,
+      "explanation": "正解は「2枚」です。3+3の2枚が最小です。貪欲に4,1,1と選ぶと3枚になるため、この硬貨体系では動的計画法で全候補を比較します。",
+      "format": "long-code",
+      "code": "coins ← {1, 3, 4}\ntarget ← 6\ndp[0] ← 0\nfor amount を 1 から target まで\n  dp[amount] ← INF\n  for each coin in coins\n    if coin ≦ amount\n      dp[amount] ← min(dp[amount], dp[amount-coin] + 1)\n    endif\n  endfor\nendfor\n表示する(dp[target])"
+    },
+    {
+      "id": "B0109",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "右と下だけに移動できる3×3格子で、中央(1,1)が障害物である。左上から右下への経路数は幾つか。",
+      "choices": [
+        "4",
+        "6",
+        "2",
+        "1"
+      ],
+      "correct": 2,
+      "explanation": "正解は「2」です。中央を避ける経路は上端を通って右端へ下る経路と、左端を通って下端へ進む経路の2本です。障害物のdpを0にします。",
+      "format": "long-code",
+      "code": "rows ← 3\ncols ← 3\nblocked ← (1, 1)\n全てのdpを0にする\ndp[0][0] ← 1\nfor r を 0 から rows - 1 まで\n  for c を 0 から cols - 1 まで\n    if (r,c) = blocked\n      dp[r][c] ← 0\n    else if NOT (r=0 AND c=0)\n      fromTop ← r>0ならdp[r-1][c]、それ以外0\n      fromLeft ← c>0ならdp[r][c-1]、それ以外0\n      dp[r][c] ← fromTop + fromLeft\n    endif\n  endfor\nendfor\n表示する(dp[2][2])"
+    },
+    {
+      "id": "B0110",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "配列の最長増加部分列の長さをO(n²)の動的計画法で求める。表示値は幾つか。",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "3"
+      ],
+      "correct": 2,
+      "explanation": "正解は「4」です。例えば1,2,4,6が長さ4です。3,5,6も増加しますが長さ3で、部分列は連続している必要はありません。",
+      "format": "long-code",
+      "code": "a ← {3, 1, 2, 5, 4, 6}\nn ← length(a)\nfor i を 0 から n - 1 まで\n  dp[i] ← 1\nendfor\nanswer ← 1\nfor i を 0 から n - 1 まで\n  for j を 0 から i - 1 まで\n    if a[j] < a[i]\n      dp[i] ← max(dp[i], dp[j] + 1)\n    endif\n  endfor\n  answer ← max(answer, dp[i])\nendfor\n表示する(answer)"
+    },
+    {
+      "id": "B0111",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "ランレングス表を復号した文字列はどれか。",
+      "choices": [
+        "ABCCC",
+        "AABBCCC",
+        "AABCCC",
+        "AAABCC"
+      ],
+      "correct": 2,
+      "explanation": "正解は「AABCCC」です。Aを2回、Bを1回、Cを3回の順に連結します。組数や文字種数ではなく各runのcountだけ繰り返します。",
+      "format": "long-code",
+      "code": "result ← 空文字列\nfor each run in runs\n  ch ← run.character\n  count ← run.count\n  i ← 0\n  while i < count\n    result ← result + ch\n    i ← i + 1\n  endwhile\nendfor\n表示する(result)",
+      "table": {
+        "headers": [
+          "character",
+          "count"
+        ],
+        "rows": [
+          [
+            "A",
+            "2"
+          ],
+          [
+            "B",
+            "1"
+          ],
+          [
+            "C",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0112",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "KMP法の前処理で文字列ABABACの最終位置に設定されるprefix値は幾つか。",
+      "choices": [
+        "3",
+        "5",
+        "0",
+        "2"
+      ],
+      "correct": 2,
+      "explanation": "正解は「0」です。末尾までのABABACには、接頭辞と一致する空でない接尾辞がありません。途中ABABAでは長さ3ですが、最後Cで失敗リンクをたどって0になります。",
+      "format": "long-code",
+      "code": "pattern ← \"ABABAC\"\nprefix[0] ← 0\nj ← 0\nfor i を 1 から length(pattern)-1 まで\n  while j > 0 AND pattern[i] ≠ pattern[j]\n    j ← prefix[j - 1]\n  endwhile\n  if pattern[i] = pattern[j]\n    j ← j + 1\n  endif\n  prefix[i] ← j\nendfor\n表示する(prefix[5])"
+    },
+    {
+      "id": "B0113",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "3個のデータ12,5,9のXORチェック値は幾つか。",
+      "choices": [
+        "16",
+        "26",
+        "0",
+        "8"
+      ],
+      "correct": 2,
+      "explanation": "正解は「0」です。12 XOR 5=9、さらに9 XOR 9=0です。同じ値同士のXORは0になります。加算チェックサム26とは計算方法が異なります。",
+      "format": "long-code",
+      "code": "data ← {12, 5, 9}\ncheck ← 0\nfor each x in data\n  check ← check XOR x\nendfor\n送信値 ← check\nreceived ← 0\nfor each x in data\n  received ← received XOR x\nendfor\nreceived ← received XOR 送信値\nif received = 0\n  表示する(0)\nelse\n  表示する(1)\nendif"
+    },
+    {
+      "id": "B0114",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "重なる区間を統合した後の区間数は幾つか。端点が接する場合も統合する。",
+      "choices": [
+        "3",
+        "4",
+        "2",
+        "1"
+      ],
+      "correct": 2,
+      "explanation": "正解は「2」です。[1,3]と[2,6]が[1,6]、[8,10]と[9,12]が[8,12]になります。二つの統合結果の間には隙間があります。",
+      "format": "long-code",
+      "code": "intervals ← {[1,3],[2,6],[8,10],[9,12]}\n開始点の昇順で整列する\nmerged ← 空配列\nfor each current in intervals\n  if mergedが空\n    currentを追加する\n  else\n    last ← mergedの末尾\n    if current.start ≦ last.end\n      last.end ← max(last.end, current.end)\n    else\n      currentを追加する\n    endif\n  endif\nendfor\n表示する(length(merged))"
+    },
+    {
+      "id": "B0115",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "容量3のLRUキャッシュへ1,2,3,1,4の順でアクセスする。4を入れるとき追い出されるキーはどれか。",
+      "choices": [
+        "3",
+        "4",
+        "2",
+        "1"
+      ],
+      "correct": 2,
+      "explanation": "正解は「2」です。1は直前に再利用され最新、3は2より新しいため、最も長く使われていない2を追い出します。FIFOなら1を選ぶ可能性がある点が違います。",
+      "format": "long-code",
+      "code": "capacity ← 3\ncache ← 空\nfor key in {1,2,3,1,4}\n  if keyがcache内にある\n    keyを最新位置へ移す\n  else\n    if size(cache) = capacity\n      最古利用位置のkeyを削除する\n    endif\n    keyを最新位置へ追加する\n  endif\nendfor\n最新から順にcacheを表示する"
+    },
+    {
+      "id": "B0116",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 3,
+      "question": "メモ化再帰でfib(6)を求める。fib(0)=0、fib(1)=1とすると戻り値は幾つか。",
+      "choices": [
+        "13",
+        "21",
+        "8",
+        "5"
+      ],
+      "correct": 2,
+      "explanation": "正解は「8」です。列は0,1,1,2,3,5,8なのでfib(6)=8です。メモ化は同じ部分問題の再計算を避けますが、漸化式の値自体は変えません。",
+      "format": "long-code",
+      "code": "全てのmemoを未計算にする\nfunction fib(n)\n  if n = 0\n    return 0\n  endif\n  if n = 1\n    return 1\n  endif\n  if memo[n]が計算済み\n    return memo[n]\n  endif\n  memo[n] ← fib(n - 1) + fib(n - 2)\n  return memo[n]\nendfunction\n表示する(fib(6))"
+    },
+    {
+      "id": "B0117",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "ワーシャル・フロイド法で全点対最短距離を求める。AからDへの最短距離はどれか。INFは辺なしを表す。",
+      "choices": [
+        "8",
+        "10",
+        "6",
+        "7"
+      ],
+      "correct": 2,
+      "explanation": "正解は「6」です。A→B→C→Dが3+2+1=6です。A→C→Dは7、A→B→Dは10です。中継点を段階的に許可して距離を更新します。",
+      "format": "long-code",
+      "code": "dist ← 初期距離行列\nvertices ← {A, B, C, D}\nfor each k in vertices\n  for each i in vertices\n    for each j in vertices\n      if dist[i][k] ≠ INF AND dist[k][j] ≠ INF\n        candidate ← dist[i][k] + dist[k][j]\n        if candidate < dist[i][j]\n          dist[i][j] ← candidate\n        endif\n      endif\n    endfor\n  endfor\nendfor\n表示する(dist[A][D])",
+      "table": {
+        "headers": [
+          "始点＼終点",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            "A",
+            "0",
+            "3",
+            "6",
+            "10"
+          ],
+          [
+            "B",
+            "INF",
+            "0",
+            "2",
+            "7"
+          ],
+          [
+            "C",
+            "INF",
+            "INF",
+            "0",
+            "1"
+          ],
+          [
+            "D",
+            "INF",
+            "INF",
+            "INF",
+            "0"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0118",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "負の重みを含むグラフへベルマン・フォード法を適用する。SからCへの最短距離はどれか。負閉路はない。",
+      "choices": [
+        "7",
+        "8",
+        "5",
+        "3"
+      ],
+      "correct": 2,
+      "explanation": "正解は「5」です。S→A→B→Cは4−2+3=5です。S→B→Cは8、S→A→Cは8で、辺を繰り返し緩和すると5へ更新されます。",
+      "format": "long-code",
+      "code": "for each v\n  dist[v] ← INF\nendfor\ndist[S] ← 0\nfor pass を 1 から 頂点数 - 1 まで\n  updated ← false\n  for each edge (u, v, cost)\n    if dist[u] ≠ INF AND dist[v] > dist[u] + cost\n      dist[v] ← dist[u] + cost\n      updated ← true\n    endif\n  endfor\n  if NOT updated\n    break\n  endif\nendfor\n表示する(dist[C])",
+      "table": {
+        "headers": [
+          "辺",
+          "重み"
+        ],
+        "rows": [
+          [
+            "S→A",
+            "4"
+          ],
+          [
+            "S→B",
+            "5"
+          ],
+          [
+            "A→B",
+            "−2"
+          ],
+          [
+            "A→C",
+            "4"
+          ],
+          [
+            "B→C",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0119",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "クラスカル法で最小全域木を作る。採用する辺の重み合計は幾つか。",
+      "choices": [
+        "8",
+        "10",
+        "7",
+        "6"
+      ],
+      "correct": 2,
+      "explanation": "正解は「7」です。重み1のA-B、2のB-Cを採用し、3のA-Cは閉路になるので除外、4のC-Dを採用して合計7です。常に軽い辺を採用するのではなく閉路を避けます。",
+      "format": "long-code",
+      "code": "edgesを重みの昇順に整列する\n各頂点を別の集合にする\ntotal ← 0\nselected ← 0\nfor each edge (u, v, weight)\n  if find(u) ≠ find(v)\n    union(u, v)\n    total ← total + weight\n    selected ← selected + 1\n  endif\n  if selected = 頂点数 - 1\n    break\n  endif\nendfor\n表示する(total)",
+      "table": {
+        "headers": [
+          "辺",
+          "重み"
+        ],
+        "rows": [
+          [
+            "A-B",
+            "1"
+          ],
+          [
+            "B-C",
+            "2"
+          ],
+          [
+            "A-C",
+            "3"
+          ],
+          [
+            "C-D",
+            "4"
+          ],
+          [
+            "B-D",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0120",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "Kosaraju法で有向グラフの強連結成分数を求める。結果は幾つか。",
+      "choices": [
+        "4",
+        "5",
+        "3",
+        "2"
+      ],
+      "correct": 2,
+      "explanation": "正解は「3」です。{A,B}は相互到達、{C,D}も相互到達、Eは単独です。B→CやD→Eは一方向なので成分を統合しません。",
+      "format": "long-code",
+      "code": "visitedを全てfalseにする\norder ← 空スタック\nfor each v\n  if NOT visited[v]\n    元グラフでdfsし終了時にorderへpushする\n  endif\nendfor\nvisitedを全てfalseにする\ncomponents ← 0\nwhile orderが空でない\n  v ← pop(order)\n  if NOT visited[v]\n    逆向きグラフでvからdfsする\n    components ← components + 1\n  endif\nendwhile\n表示する(components)",
+      "table": {
+        "headers": [
+          "辺"
+        ],
+        "rows": [
+          [
+            "A→B"
+          ],
+          [
+            "B→A"
+          ],
+          [
+            "B→C"
+          ],
+          [
+            "C→D"
+          ],
+          [
+            "D→C"
+          ],
+          [
+            "D→E"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0121",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "最大ヒープから最大値を末尾へ移すヒープソートの第1回目後、未整列部分はどれか。",
+      "choices": [
+        "{7,5,8,2}",
+        "{8,5,7,2}",
+        "{8,7,5,2}",
+        "{5,7,8,2}"
+      ],
+      "correct": 2,
+      "explanation": "正解は「{8,7,5,2}」です。9を末尾へ移し、先頭5をサイズ4で下方修正すると8と交換して{8,7,5,2}になります。末尾9は確定済みで再ヒープ化の対象外です。",
+      "format": "long-code",
+      "code": "a ← {9, 7, 8, 2, 5}\nheapSize ← length(a)\nswap(a[0], a[heapSize - 1])\nheapSize ← heapSize - 1\ni ← 0\nwhile iに子がある\n  child ← 大きい方の子の添字\n  if a[i] ≧ a[child]\n    break\n  endif\n  swap(a[i], a[child])\n  i ← child\nendwhile\n未整列部分a[0..heapSize-1]を表示する"
+    },
+    {
+      "id": "B0122",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "LSD基数ソートで1の位だけを安定に処理した直後の並びはどれか。",
+      "choices": [
+        "{2,24,45,66,75,90,170,802}",
+        "{802,2,24,45,75,66,170,90}",
+        "{170,90,802,2,24,45,75,66}",
+        "{90,170,2,802,24,45,75,66}"
+      ],
+      "correct": 2,
+      "explanation": "正解は「{170,90,802,2,24,45,75,66}」です。1の位0は170,90、2は802,2、4は24、5は45,75、6は66です。同じバケット内では元の順序を保つため802が2より先です。",
+      "format": "long-code",
+      "code": "a ← {170, 45, 75, 90, 802, 24, 2, 66}\nfor d を 0 から 9 まで\n  bucket[d] ← 空キュー\nendfor\nfor each x in a\n  digit ← x mod 10\n  enqueue(bucket[digit], x)\nendfor\nwrite ← 0\nfor d を 0 から 9 まで\n  while bucket[d]が空でない\n    a[write] ← dequeue(bucket[d])\n    write ← write + 1\n  endwhile\nendfor\n表示する(a)"
+    },
+    {
+      "id": "B0123",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "CAT、CAR、DOGをトライ木へ登録した後、search(\"CA\")とstartsWith(\"CA\")の結果はどれか。",
+      "choices": [
+        "false、false",
+        "true、false",
+        "false、true",
+        "true、true"
+      ],
+      "correct": 2,
+      "explanation": "正解は「false、true」です。CAは登録語そのものではないのでsearchはfalseですが、CATとCARの接頭辞なのでstartsWithはtrueです。終端印と経路の存在を区別します。",
+      "format": "long-code",
+      "code": "root ← 新しいノード\nfor word in {\"CAT\", \"CAR\", \"DOG\"}\n  node ← root\n  for each ch in word\n    if nodeにchの子がない\n      chの子を作る\n    endif\n    node ← chの子\n  endfor\n  node.isWord ← true\nendfor\nsearchResult ← search(\"CA\")\nprefixResult ← startsWith(\"CA\")\n表示する(searchResult, prefixResult)"
+    },
+    {
+      "id": "B0124",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "空のAVL木へ30、20、10の順に挿入し平衡化する。根はどれか。",
+      "choices": [
+        "30",
+        "根は定まらない",
+        "20",
+        "10"
+      ],
+      "correct": 2,
+      "explanation": "正解は「20」です。30の左の左へ10が入りLL不均衡になるため、30を右回転します。20が根、10が左、30が右になります。",
+      "format": "long-code",
+      "code": "root ← null\nfor key in {30, 20, 10}\n  root ← insert(root, key)\nendfor\nfunction insert(node, key)\n  二分探索木としてkeyを挿入する\n  node.heightを更新する\n  balance ← 左の高さ - 右の高さ\n  if balance > 1 AND key < node.left.key\n    return rotateRight(node)\n  endif\n  その他の不均衡も必要なら回転する\n  return node\nendfunction\n表示する(root.key)"
+    },
+    {
+      "id": "B0125",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "編集距離を動的計画法で求める。\"cat\"を\"cut\"へ変える最少操作回数は幾つか。挿入・削除・置換のコストは各1とする。",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "0"
+      ],
+      "correct": 2,
+      "explanation": "正解は「1」です。中央のaをuへ1回置換すればよいので距離1です。先頭cと末尾tは一致し、その位置では追加コストがありません。",
+      "format": "long-code",
+      "code": "s ← \"cat\"\nt ← \"cut\"\nfor i を 0 から length(s) まで\n  dp[i][0] ← i\nendfor\nfor j を 0 から length(t) まで\n  dp[0][j] ← j\nendfor\nfor i を 1 から length(s) まで\n  for j を 1 から length(t) まで\n    cost ← s[i-1]=t[j-1]なら0、それ以外1\n    dp[i][j] ← min(dp[i-1][j]+1,\n                    dp[i][j-1]+1,\n                    dp[i-1][j-1]+cost)\n  endfor\nendfor\n表示する(dp[3][3])"
+    },
+    {
+      "id": "B0126",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "0/1ナップサックで容量5のとき得られる最大価値は幾つか。品物は各1回だけ選べる。",
+      "choices": [
+        "11",
+        "12",
+        "9",
+        "7"
+      ],
+      "correct": 2,
+      "explanation": "正解は「9」です。重さ2・価値4と重さ3・価値5を選ぶと容量5で価値9です。価値7の品物単独より大きく、全品は重さ9で入りません。",
+      "format": "long-code",
+      "code": "capacity ← 5\nweights ← {2, 3, 4}\nvalues ← {4, 5, 7}\nfor w を 0 から capacity まで\n  dp[w] ← 0\nendfor\nfor i を 0 から 2 まで\n  for w を capacity から weights[i] まで 1 ずつ減らす\n    dp[w] ← max(dp[w],\n                dp[w-weights[i]] + values[i])\n  endfor\nendfor\n表示する(dp[capacity])",
+      "table": {
+        "headers": [
+          "品物",
+          "重さ",
+          "価値"
+        ],
+        "rows": [
+          [
+            "A",
+            "2",
+            "4"
+          ],
+          [
+            "B",
+            "3",
+            "5"
+          ],
+          [
+            "C",
+            "4",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0127",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "集合{3,5,8}の各要素を高々1回使い、合計11を作れるか。表示結果はどれか。",
+      "choices": [
+        "要素を重複使用すればtrue",
+        "探索順によって変わる",
+        "true",
+        "false"
+      ],
+      "correct": 2,
+      "explanation": "正解は「true」です。3+8=11なのでtrueです。後ろから更新することで、同じ要素を同一反復内で重複使用しない0/1部分和になります。",
+      "format": "long-code",
+      "code": "values ← {3, 5, 8}\ntarget ← 11\nfor s を 0 から target まで\n  possible[s] ← false\nendfor\npossible[0] ← true\nfor each x in values\n  for s を target から x まで 1 ずつ減らす\n    if possible[s - x]\n      possible[s] ← true\n    endif\n  endfor\nendfor\n表示する(possible[target])"
+    },
+    {
+      "id": "B0128",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "文字列ABCBDABとBDCABAの最長共通部分列の長さは幾つか。",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "3"
+      ],
+      "correct": 2,
+      "explanation": "正解は「4」です。BCBAやBDABなど長さ4の共通部分列があります。部分列は連続不要ですが順序を保ちます。長さ5の共通部分列は作れません。",
+      "format": "long-code",
+      "code": "x ← \"ABCBDAB\"\ny ← \"BDCABA\"\ndpの全要素を0にする\nfor i を 1 から length(x) まで\n  for j を 1 から length(y) まで\n    if x[i-1] = y[j-1]\n      dp[i][j] ← dp[i-1][j-1] + 1\n    else\n      dp[i][j] ← max(dp[i-1][j], dp[i][j-1])\n    endif\n  endfor\nendfor\n表示する(dp[length(x)][length(y)])"
+    },
+    {
+      "id": "B0129",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "重み付き区間スケジューリングで、重ならない仕事から得られる最大利益は幾らか。終了時刻と次の開始時刻が同じ仕事は両立できる。",
+      "choices": [
+        "16",
+        "22",
+        "17",
+        "11"
+      ],
+      "correct": 2,
+      "explanation": "正解は「17」です。仕事2(2～5,利益6)と仕事5(5～8,利益11)を選ぶと17です。利益11だけを選ぶより大きく、重なる仕事の利益を同時加算できません。",
+      "format": "long-code",
+      "code": "jobsを終了時刻の昇順に整列する\ndp[0] ← 0\nfor i を 1 から 仕事数 まで\n  j ← job[i]と重ならない最後の仕事番号\n  take ← job[i].profit + dp[j]\n  skip ← dp[i - 1]\n  dp[i] ← max(take, skip)\nendfor\nanswer ← dp[仕事数]\n表示する(answer)",
+      "table": {
+        "headers": [
+          "仕事",
+          "開始",
+          "終了",
+          "利益"
+        ],
+        "rows": [
+          [
+            "1",
+            "1",
+            "3",
+            "5"
+          ],
+          [
+            "2",
+            "2",
+            "5",
+            "6"
+          ],
+          [
+            "3",
+            "4",
+            "6",
+            "5"
+          ],
+          [
+            "4",
+            "6",
+            "7",
+            "4"
+          ],
+          [
+            "5",
+            "5",
+            "8",
+            "11"
+          ],
+          [
+            "6",
+            "7",
+            "9",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0130",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "容量2の有界バッファへ消費なしでproducerが3回putを試みる。3回目のproducerはどうなるか。",
+      "choices": [
+        "full待ちで停止する",
+        "mutexを増やして続行する",
+        "empty待ちで停止する",
+        "3個目を上書きする"
+      ],
+      "correct": 2,
+      "explanation": "正解は「empty待ちで停止する」です。emptyは2から2回のwaitで0になります。3回目のwait(empty)は空きがないため停止します。fullは消費者が待つための個数です。",
+      "format": "long-code",
+      "code": "semaphore empty ← 2\nsemaphore full ← 0\nsemaphore mutex ← 1\nprocedure put(item)\n  wait(empty)\n  wait(mutex)\n  bufferへitemを追加する\n  signal(mutex)\n  signal(full)\nendprocedure\nput(A)\nput(B)\nput(C)\n表示する(\"到達\")"
+    },
+    {
+      "id": "B0131",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "三角形A-B-C-Aと、C-Dという辺をもつ無向グラフを2色で彩色できるか。",
+      "choices": [
+        "できる。Dだけ第3色にする",
+        "頂点順によって可否が変わる",
+        "できない",
+        "できる。AとCを同色にする"
+      ],
+      "correct": 2,
+      "explanation": "正解は「できない」です。奇数閉路である三角形は2色では彩色できません。C-Dの枝は原因ではなく、探索順を変えても必要色数は変わりません。",
+      "format": "long-code",
+      "code": "colors ← 2\nfor each v\n  color[v] ← 0\nendfor\nfunction paint(v)\n  if vが全頂点の次\n    return true\n  endif\n  for c を 1 から colors まで\n    if 全ての隣接頂点と色が異なる\n      color[v] ← c\n      if paint(次の頂点)\n        return true\n      endif\n      color[v] ← 0\n    endif\n  endfor\n  return false\nendfunction\n表示する(paint(A))",
+      "table": {
+        "headers": [
+          "辺"
+        ],
+        "rows": [
+          [
+            "A-B"
+          ],
+          [
+            "B-C"
+          ],
+          [
+            "C-A"
+          ],
+          [
+            "C-D"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0132",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "先行順A,B,D,E,C,Fと中間順D,B,E,A,C,Fから二分木を復元する。後行順はどれか。",
+      "choices": [
+        "D,B,E,A,C,F",
+        "E,D,B,F,C,A",
+        "D,E,B,F,C,A",
+        "A,B,D,E,C,F"
+      ],
+      "correct": 2,
+      "explanation": "正解は「D,E,B,F,C,A」です。先行順先頭Aが根です。左部分木は中間順D,B,Eで根B、右部分木はC,Fで根Cです。後行順は左D,E,B、右F,C、最後Aです。",
+      "format": "long-code",
+      "code": "preorder ← {A,B,D,E,C,F}\ninorder ← {D,B,E,A,C,F}\nfunction build(preL, preR, inL, inR)\n  if preL > preR\n    return null\n  endif\n  rootValue ← preorder[preL]\n  k ← inorderでrootValueの位置\n  leftSize ← k - inL\n  root.left ← build(preL+1, preL+leftSize, inL, k-1)\n  root.right ← build(preL+leftSize+1, preR, k+1, inR)\n  return root\nendfunction\nroot ← build(0,5,0,5)\nrootを後行順で表示する"
+    },
+    {
+      "id": "B0133",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "長さ3の連続部分配列の和が最大となる値をスライディングウィンドウで求める。結果は幾つか。",
+      "choices": [
+        "10",
+        "14",
+        "9",
+        "8"
+      ],
+      "correct": 2,
+      "explanation": "正解は「9」です。窓の和は8(2+1+5)、7、9(5+1+3)、6なので最大9です。窓をずらすとき左端を引き右端を足します。",
+      "format": "long-code",
+      "code": "a ← {2, 1, 5, 1, 3, 2}\nk ← 3\nwindow ← 0\nfor i を 0 から k - 1 まで\n  window ← window + a[i]\nendfor\nbest ← window\nfor right を k から length(a)-1 まで\n  left ← right - k\n  window ← window - a[left] + a[right]\n  best ← max(best, window)\nendfor\n表示する(best)"
+    },
+    {
+      "id": "B0134",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 4,
+      "question": "10進数字列1234から長さ2のパターン34をローリングハッシュで探す。最初に一致する添字はどれか。添字は0から始まる。",
+      "choices": [
+        "0",
+        "1",
+        "3",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "正解は「2」です。窓ハッシュは12、23、34と更新され、添字2でパターン34と一致します。ハッシュ一致後に文字列も比較して衝突を除外します。",
+      "format": "long-code",
+      "code": "text ← \"1234\"\npattern ← \"34\"\nm ← 2\npower ← 10\ntargetHash ← 3 × 10 + 4\nwindowHash ← 1 × 10 + 2\nfor i を 0 から length(text)-m まで\n  if windowHash = targetHash\n    if text[i..i+m-1] = pattern\n      return i\n    endif\n  endif\n  if i < length(text)-m\n    leftDigit ← 数値(text[i])\n    nextDigit ← 数値(text[i+m])\n    windowHash ← (windowHash-leftDigit×power)×10+nextDigit\n  endif\nendfor\nreturn -1"
+    },
+    {
+      "id": "B0135",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "負辺を含むグラフへ、確定済み頂点を再緩和しないダイクストラ法を適用した。Aの表示距離2に対する評価はどれか。",
+      "choices": [
+        "正しい。非負辺だけを通る経路が優先される",
+        "誤り。真の最短距離は−8",
+        "負辺があっても閉路がなければ常に正しい",
+        "誤り。真の最短距離は−5"
+      ],
+      "correct": 3,
+      "explanation": "正解は「誤り。真の最短距離は−5」です。S→B→Aは5−10=−5で直接辺2より短いです。Aを距離2で先に確定すると後から改善できないため、負辺にはベルマン・フォード法などを使います。",
+      "format": "long-code",
+      "code": "dist[S] ← 0\ndist[A] ← INF\ndist[B] ← INF\nqueueへ(0,S)を入れる\nwhile queueが空でない\n  (d,v) ← 最小値を取り出す\n  if visited[v]\n    continue\n  endif\n  visited[v] ← true\n  for each edge (v,w,cost)\n    if NOT visited[w] AND dist[w] > d + cost\n      dist[w] ← d + cost\n      queueへ(dist[w],w)を入れる\n    endif\n  endfor\nendwhile\n表示する(dist[A])",
+      "table": {
+        "headers": [
+          "辺",
+          "重み"
+        ],
+        "rows": [
+          [
+            "S→A",
+            "2"
+          ],
+          [
+            "S→B",
+            "5"
+          ],
+          [
+            "B→A",
+            "−10"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0136",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "経路圧縮を意図したfind関数が、再帰結果をparentへ保存していない。正しさと計算量への影響として適切なものはどれか。",
+      "choices": [
+        "代表を必ず誤って返す",
+        "集合が自動的に分裂する",
+        "unionがなくても全頂点が同じ集合になる",
+        "代表は正しく返すが、木が平らにならず後続探索が遅くなり得る"
+      ],
+      "correct": 3,
+      "explanation": "正解は「代表は正しく返すが、木が平らにならず後続探索が遅くなり得る」です。再帰呼出しの戻り値は正しい代表ですが、parent[x]へ代入しないため経路圧縮されません。`parent[x]←find(parent[x])`として保存すると後続探索を高速化できます。",
+      "format": "long-code",
+      "code": "function find(x)\n  if parent[x] = x\n    return x\n  endif\n  return find(parent[x])  // 保存していない\nendfunction\nfor i を 0 から n-1 まで\n  parent[i] ← i\nendfor\nunion(0,1)\nunion(1,2)\nunion(2,3)\nfor i を 0 から 3 まで\n  表示する(find(i))\nendfor"
+    },
+    {
+      "id": "B0137",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "0/1ナップサック表から最適解を逆追跡する。容量6で選ばれる品物の組合せはどれか。",
+      "choices": [
+        "AとB",
+        "BとC",
+        "AとBとC",
+        "AとC"
+      ],
+      "correct": 3,
+      "explanation": "正解は「AとC」です。A(重さ2,価値3)+C(4,8)は容量6で価値11です。B+Cは重さ7、全品は9で超過し、A+Bの価値7より大きくなります。",
+      "format": "long-code",
+      "code": "capacity ← 6\nitems ← {A, B, C}\nweights ← {2, 3, 4}\nvalues ← {3, 4, 8}\ndp[0][0..capacity] ← 0\nfor i を 1 から 3 まで\n  for w を 0 から capacity まで\n    dp[i][w] ← dp[i-1][w]\n    if weights[i] ≦ w\n      dp[i][w] ← max(dp[i][w],\n                     dp[i-1][w-weights[i]]+values[i])\n    endif\n  endfor\nendfor\nw ← capacity\nselected ← 空\nfor i を 3 から 1 まで 1 ずつ減らす\n  if dp[i][w] ≠ dp[i-1][w]\n    items[i]をselectedへ追加する\n    w ← w - weights[i]\n  endif\nendfor\n表示する(selected)",
+      "table": {
+        "headers": [
+          "品物",
+          "重さ",
+          "価値"
+        ],
+        "rows": [
+          [
+            "A",
+            "2",
+            "3"
+          ],
+          [
+            "B",
+            "3",
+            "4"
+          ],
+          [
+            "C",
+            "4",
+            "8"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0138",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "Kahn法の出力頂点数が全頂点数より少なかった。コードの判定結果として適切なものはどれか。",
+      "choices": [
+        "グラフは必ず連結でない",
+        "最短路が存在しない",
+        "入次数の合計が0である",
+        "有向閉路がある"
+      ],
+      "correct": 3,
+      "explanation": "正解は「有向閉路がある」です。0を出した後、1と2は相互の辺で入次数が0にならず、3にも到達できません。全頂点を削除できないことが有向閉路検出になります。",
+      "format": "long-code",
+      "code": "indegreeを全て0にする\nfor each edge (u,v)\n  indegree[v] ← indegree[v]+1\nendfor\n入次数0をqueueへ入れる\ncount ← 0\nwhile queueが空でない\n  v ← dequeue()\n  count ← count+1\n  for each w in adj[v]\n    indegree[w] ← indegree[w]-1\n    if indegree[w]=0\n      enqueue(w)\n    endif\n  endfor\nendwhile\nif count < 頂点数\n  表示する(\"cycle\")\nendif",
+      "table": {
+        "headers": [
+          "辺"
+        ],
+        "rows": [
+          [
+            "0→1"
+          ],
+          [
+            "1→2"
+          ],
+          [
+            "2→1"
+          ],
+          [
+            "2→3"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "B0139",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "fib(5)を求めるコードは、memoを全て0で初期化した後、未計算値を−1と判定している。表示値と修正はどれか。",
+      "choices": [
+        "5を表示する。修正不要",
+        "0を表示する。基底条件を削除する",
+        "5を表示する。memoを1で初期化する",
+        "0を表示する。memoを−1で初期化する"
+      ],
+      "correct": 3,
+      "explanation": "正解は「0を表示する。memoを−1で初期化する」です。n=5でmemo[5]=0≠−1なので、再帰せず0を返します。0はfib(0)の正当な値でもあるため、未計算を−1など別の印で初期化します。",
+      "format": "long-code",
+      "code": "for i を 0 から 5 まで\n  memo[i] ← 0  // 初期化の誤り\nendfor\nfunction fib(n)\n  if n ≦ 1\n    return n\n  endif\n  if memo[n] ≠ -1\n    return memo[n]\n  endif\n  memo[n] ← fib(n-1)+fib(n-2)\n  return memo[n]\nendfunction\n表示する(fib(5))"
+    },
+    {
+      "id": "B0140",
+      "exam": "B",
+      "category": "科目B",
+      "subcategory": "アルゴリズムとプログラミング",
+      "difficulty": 5,
+      "question": "根がMAX、その子がMINで、各MINノードの葉が左から{3,5,2}と{9,1,4}であるゲーム木をminimax評価する。根の値はどれか。",
+      "choices": [
+        "1",
+        "3",
+        "9",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "正解は「2」です。左MINはmin(3,5,2)=2、右MINはmin(9,1,4)=1なので、根MAXはmax(2,1)=2です。MAX層とMIN層の役割を交互に適用します。",
+      "format": "long-code",
+      "code": "function minimax(node, maximizing)\n  if nodeが葉\n    return node.value\n  endif\n  if maximizing\n    best ← -INF\n    for each child in node.children\n      best ← max(best, minimax(child, false))\n    endfor\n  else\n    best ← INF\n    for each child in node.children\n      best ← min(best, minimax(child, true))\n    endfor\n  endif\n  return best\nendfunction\n表示する(minimax(root, true))",
+      "table": {
+        "headers": [
+          "MINノード",
+          "葉の値"
+        ],
+        "rows": [
+          [
+            "左",
+            "3,5,2"
+          ],
+          [
+            "右",
+            "9,1,4"
+          ]
+        ]
+      }
+    }
+  ]
+}

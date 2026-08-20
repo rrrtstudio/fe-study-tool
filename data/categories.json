@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "title": "基本情報技術者試験 サンプル問題",
+  "title": "基本情報技術者試験 500問学習デッキ",
   "exams": [
     { "id": "A", "label": "科目A" },
     { "id": "B", "label": "科目B" }
@@ -39,6 +39,21 @@
     { "path": "./B/algorithm-core-02.json", "exam": "B", "category": "科目B", "subcategory": "アルゴリズムとプログラミング" },
     { "path": "./B/security.json", "exam": "B", "category": "科目B", "subcategory": "情報セキュリティ" },
     { "path": "./B/security-core-01.json", "exam": "B", "category": "科目B", "subcategory": "情報セキュリティ" },
-    { "path": "./B/security-core-02.json", "exam": "B", "category": "科目B", "subcategory": "情報セキュリティ" }
+    { "path": "./B/security-core-02.json", "exam": "B", "category": "科目B", "subcategory": "情報セキュリティ" },
+    { "path": "./A/basic-theory-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "基礎理論" },
+    { "path": "./A/computer-system-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "コンピュータシステム" },
+    { "path": "./A/algorithm-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "アルゴリズムとプログラミング" },
+    { "path": "./A/database-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "データベース" },
+    { "path": "./A/network-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "ネットワーク" },
+    { "path": "./A/security-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "セキュリティ" },
+    { "path": "./A/human-interface-multimedia-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "ヒューマンインタフェース・マルチメディア" },
+    { "path": "./A/system-development-core-03.json", "exam": "A", "category": "テクノロジ系", "subcategory": "システム開発技術" },
+    { "path": "./A/management-core-03.json", "exam": "A", "category": "マネジメント系", "subcategory": "プロジェクト・サービスマネジメント" },
+    { "path": "./A/system-audit-core-03.json", "exam": "A", "category": "マネジメント系", "subcategory": "システム監査" },
+    { "path": "./A/strategy-core-03.json", "exam": "A", "category": "ストラテジ系", "subcategory": "経営戦略・システム戦略" },
+    { "path": "./A/corporate-legal-core-03.json", "exam": "A", "category": "ストラテジ系", "subcategory": "企業活動・法務" },
+    { "path": "./B/algorithm-standard-core-03.json", "exam": "B", "category": "科目B", "subcategory": "アルゴリズムとプログラミング" },
+    { "path": "./B/algorithm-long-core-03.json", "exam": "B", "category": "科目B", "subcategory": "アルゴリズムとプログラミング" },
+    { "path": "./B/security-core-03.json", "exam": "B", "category": "科目B", "subcategory": "情報セキュリティ" }
   ]
 }
